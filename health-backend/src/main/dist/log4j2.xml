@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration status="INFO">
+
+    <appenders>
+    
+        <RollingFile name="error-log" fileName="log/error.log"
+                     filePattern="log/$${date:yyyy-MM}/docker-%d{MM-dd-yyyy}-%i.log.gz">
+            <ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="DENY" />
+            <PatternLayout pattern="%d{yyyy-MM-dd '@' HH:mm:ss z} %-5level [%class{36}:%L] %M - %msg%xEx%n"/>
+            <SizeBasedTriggeringPolicy size="10MB"/>
+        </RollingFile>
+        
+        <RollingFile name="warn-log" fileName="log/warn.log"
+                     filePattern="log/$${date:yyyy-MM}/docker-%d{MM-dd-yyyy}-%i.log.gz">
+            <ThresholdFilter level="warn" onMatch="ACCEPT" onMismatch="DENY" />
+            <PatternLayout pattern="%d{yyyy-MM-dd '@' HH:mm:ss z} %-5level [%class{36}:%L] %M - %msg%xEx%n"/>
+            <SizeBasedTriggeringPolicy size="10MB"/>
+        </RollingFile>
+        
+        <RollingFile name="info-log" fileName="log/info.log"
+                     filePattern="log/$${date:yyyy-MM}/docker-%d{MM-dd-yyyy}-%i.log.gz">
+            <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY" />
+            <PatternLayout pattern="%d{yyyy-MM-dd '@' HH:mm:ss z} %-5level [%class{36}:%L] %M - %msg%xEx%n"/>
+            <SizeBasedTriggeringPolicy size="10MB"/>
+        </RollingFile>
+        
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout charset="UTF-8"
+                pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%class{36}:%L] %M - %msg%xEx%n" />
+        </Console>
+
+    </appenders>
+
+    <loggers>
+        <root level="trace">
+            <appender-ref ref="Console"/>
+            <appender-ref ref="info-log"/>
+            <appender-ref ref="warn-log"/>
+            <appender-ref ref="error-log"/>
+        </root>
+    </loggers>
+
+</configuration>
