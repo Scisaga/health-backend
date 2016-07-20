@@ -1,0 +1,27 @@
+group 'org.tfelab.health'
+version '0.0.1'
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'maven'
+apply plugin: 'application'
+
+sourceCompatibility = 1.8
+
+mainClassName = 'org.tfelab.health.Server'
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+
+repositories {
+	maven {
+		url "http://tfelab.org:60002/content/groups/public"
+		credentials {
+			username 'developer'
+			password 'developer'
+		}
+	}
+}
+
+dependencies {
+    compile 'org.tfelab:core:0.3.89'
+    testCompile 'junit:junit:4.12'
+}
