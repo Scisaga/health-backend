@@ -19,8 +19,8 @@ public class Section implements JSONable<Section>{
 	
 	private static final Logger logger = LogManager.getLogger(Section.class.getName());
 	
-	@DatabaseField(id = true, columnName = "id", dataType = DataType.INTEGER, canBeNull = false)
-	public String id;
+	@DatabaseField(columnName = "id", dataType = DataType.INTEGER, canBeNull = false, generatedId = true)
+	public int id;
 	
 	@DatabaseField(dataType = DataType.STRING, width = 64, canBeNull = false)
 	public String name;

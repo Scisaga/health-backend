@@ -19,8 +19,8 @@ public class DoctorService implements JSONable<DoctorService>{
 	
 	private static final Logger logger = LogManager.getLogger(DoctorService.class.getName());
 	
-	@DatabaseField(id = true, columnName = "id", dataType = DataType.INTEGER, canBeNull = false)
-	public String id;
+	@DatabaseField(columnName = "id", dataType = DataType.INTEGER, canBeNull = false, generatedId = true)
+	public int id;
 	
 	@DatabaseField(dataType = DataType.INTEGER, canBeNull = false)
 	public int doctor_id;

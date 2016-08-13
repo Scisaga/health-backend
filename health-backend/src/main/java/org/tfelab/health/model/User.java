@@ -1,6 +1,8 @@
 package org.tfelab.health.model;
 
 import java.util.Date;
+import java.util.List;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.tfelab.common.db.DBName;
@@ -11,6 +13,7 @@ import org.tfelab.common.json.JSONable;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.field.DataType;
 import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.stmt.QueryBuilder;
 import com.j256.ormlite.table.DatabaseTable;
 
 @DatabaseTable(tableName = "users")
@@ -19,8 +22,8 @@ public class User implements JSONable<User>{
 	
 	private static final Logger logger = LogManager.getLogger(User.class.getName());
 	
-	@DatabaseField(id = true, columnName = "id", dataType = DataType.INTEGER, canBeNull = false)
-	public String id;
+	@DatabaseField(columnName = "id", dataType = DataType.INTEGER, canBeNull = false, generatedId = true)
+	public int id;
 	
 	@DatabaseField(dataType = DataType.STRING, width = 64, canBeNull = false)
 	public String name;
@@ -106,6 +109,20 @@ public class User implements JSONable<User>{
 		}
 		
 		return false;
+	}
+	
+	/**
+	 * 
+	 * @param id
+	 * @return
+	 * @throws Exception
+	 */
+	public static User getUserById(int id) throws Exception{
+		
+		Dao<User, String> dao = OrmLiteDaoManager.getDao(User.class);
+		User user = dao.queryForId(String.valueOf(id));
+			
+		return user;
 	}
 
 	@Override

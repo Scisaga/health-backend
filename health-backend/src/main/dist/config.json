@@ -1,18 +1,13 @@
 {
-	"docker": {
-		"www": "tetra-data.com",
-		"host": "tcp://127.0.0.1:6666",
-		"version": "1.21"
-	},
 	"io": {
 		"connectTimeout": 15000,
 		"readTimeout": 15000
 	},
 	"database": {
-		"docker": {
-			"url": "jdbc:mysql://127.0.0.1:3306/docker",
-			"username": "docker",
-			"password": "docker",
+		"health": {
+			"url": "jdbc:mysql://10.0.0.13:3306/health",
+			"username": "health",
+			"password": "dockerhealth",
 			"initialPoolSize": 5,
 			"minPoolSize": 5,
 			"acquireIncrement": 5,
@@ -21,20 +16,15 @@
 		}
 	},	
 	"dev": {
-		"docker": {
-			"www": "tetra-data.com",
-			"host": "tcp://127.0.0.1:6666",
-			"version": "1.21"
-		},
 		"io": {
 			"connectTimeout": 15000,
 			"readTimeout": 15000
 		},
 		"database": {
-			"docker": {
-				"url": "jdbc:mysql://127.0.0.1:3306/docker",
-				"username": "docker",
-				"password": "docker",
+			"health": {
+				"url": "jdbc:mysql://10.0.0.13:3306/health",
+				"username": "health",
+				"password": "health",
 				"initialPoolSize": 5,
 				"minPoolSize": 5,
 				"acquireIncrement": 5,
