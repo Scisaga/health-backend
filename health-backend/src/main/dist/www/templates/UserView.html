@@ -1,0 +1,25 @@
+<div id="login-form" class="col-xs-10 col-md-6 col-md-offset-3 col-xs-offset-1">
+	<h2>用户信息</h2>
+	<label for="inputEmail">用户名</label>
+	<input type="username" id="inputUsername" name="username" class="form-control" placeholder="请输入用户名" style="font-family: Consolas" value="<%= name %>" >
+
+	<label for="inputPassword">密码</label>
+	<input type="password" id="inputPassword" name="password" class="form-control" placeholder="请输入密码" style="font-family: Consolas">
+
+	<label for="inputNickName">昵称</label>
+	<input type="" id="inputNickName" name="nick_name" class="form-control" placeholder="" value="<%= nick_name %>">
+
+	<label for="inputAge">性别</label>
+	<input type="checkbox" class="share" name="gender" <% gender==1? print("checked") : print()%>/>
+
+	<label for="inputAge">年龄</label>
+	<input type="" id="inputAge" name="age" class="form-control" placeholder="" style="font-family: Consolas" value="<%= age %>">
+
+	<label for="inputCell">手机</label>
+	<input type="" id="inputCell" name="cell" class="form-control" placeholder="" value="<%= cell %>">
+
+	<label for="inputWeixin">微信</label>
+	<input type="" id="inputWeixin" name="weixin" class="form-control" placeholder="" value="<%= weixin %>">
+
+	<button class="btn btn-primary btn-block save" type="submit">保存</button>
+</div>
