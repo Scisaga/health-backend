@@ -11,11 +11,16 @@ var LoginView = Backbone.View.extend({
 			async: false,
 			success: function(data) {
 				that.$el.append(data);
+				that.$("input[name='remember-me']").bootstrapSwitch({
+					size: 'small',
+				});
 			}
 		});
 	},
 
 	render: function() {
+
+		var that = this;
 
 		this.$('#inputPassword').bind('keypress', function (event) {
 			if(event.keyCode == '13'){
@@ -23,146 +28,154 @@ var LoginView = Backbone.View.extend({
 			}
 		});
 
+		$(this.$el).bootstrapValidator({
+			fields: {
+				username: {
+					validators: {
+						notEmpty: {
+							message: '用户名不能为空'
+						},
+						regexp: {
+	                        regexp: /^[a-zA-Z0-9]+$/i,
+	                        message: '用户名只能由英文和数字构成'
+	                    },
+	                    stringLength: {
+	                    	min: 6,
+	                        max: 32,
+	                        message: '用户名长度需要大于6个字符，小于32个字符'
+	                    }
+					}
+				},
+				passwd: {
+					validators: {
+						notEmpty: {
+							message: '密码不能为空'
+						},
+						stringLength: {
+	                    	min: 8,
+	                        max: 32,
+	                        message: '密码长度需要大于8个字符，小于32个字符'
+	                    }
+					}
+				}
+			}
+		});
+
+		this.validator = $(this.$el).data('bootstrapValidator');
+
 		this.$('button.signup').click(function(){
 
-			var username = that.$('#inputUsername').val();
-			var passwd = that.$('#inputPassword').val();
-			
+    		that.validator.validate();
 
-			// 获取token
-			$.ajax({
-				url: '/user',
-				type: 'POST',
-				dataType: "json",
-				data: {
-					_q: JSON.stringify({
-						name: username,
-						password: passwd
-					})
-				},
-				crossDomain: true,
-				success: function (result) {
+    		if(that.validator.isValid()) {
 
-					if(result.code == 111){
+
+				var username = that.$('#inputUsername').val();
+				var passwd = that.$('#inputPassword').val();
+
+    			$.ajax({
+					url: '/users',
+					type: 'POST',
+					dataType: "json",
+					data: {
+						_q: JSON.stringify({
+							name: username,
+							password: passwd
+						})
+					},
+					crossDomain: true,
+					success: function (result) {
+
+						if(result.code == 111){
+							var n = noty({
+								text: '注册成功',
+								type: 'success'
+							});
+
+							Cookies.set('uid', result.data);
+
+							if(that.$('input:checkbox')[0].checked){
+								Cookies.set('username', email);
+							} else {
+								Cookies.remove('username');
+							}
+
+							window.app.navigate("user", {trigger: true});
+						}
+						else {
+							var n = noty({
+								text: '注册失败',
+								type: 'error'
+							});
+						}
+						
+					},
+					error: function (xhr, ajaxOptions, thrownError) {
 						var n = noty({
-							text: '注册成功',
-							type: 'success'
-						});
-					}
-					else {
-						var n = noty({
-							text: '注册失败',
+							text: '后台错误',
 							type: 'error'
 						});
 					}
-					
-				},
-				error: function (xhr, ajaxOptions, thrownError) {
-					var n = noty({
-						text: '后台错误',
-						type: 'error'
-					});
-				}
-			});
-
-			if(that.$('input:checkbox')[0].checked){
-				Cookies.set('username', email);
-			} else {
-				Cookies.remove('username');
-			}
+				});
+    		}
 
 		});
 
 		this.$('button.login').click(function(){
 
-			var $button = $(this);
+    		that.validator.validate();
 
-			$(this).isLoading({
-				text: "登陆中",
-				position: "inside",
-				disableOthers: [
-					that.$('#inputUsername'),
-					that.$('#inputPassword'),
-					that.$('button.signup')
-				]
-			});
+    		if(that.validator.isValid()) {
 
-			var username = that.$('#inputUsername').val();
-			var passwd = that.$('#inputPassword').val();
-			
+				var username = that.$('#inputUsername').val();
+				var passwd = that.$('#inputPassword').val();
 
-			// 获取token
-			$.ajax({
-				url: '/wiki/api.php',
-				type: 'POST',
-				dataType: "json",
-				data: {
-					action: 'login',
-					lgname: username,
-					format: 'json'
-				},
-				crossDomain: true,
-				success: function (result) {
+    			$.ajax({
+					url: '/login',
+					type: 'POST',
+					dataType: "json",
+					data: {
+						_q: JSON.stringify({
+							name: username,
+							password: passwd
+						})
+					},
+					crossDomain: true,
+					success: function (result) {
 
-					var token = result.login.token;
+						if(result.code == 1){
+							var n = noty({
+								text: '登陆成功',
+								type: 'success'
+							});
 
-					// 登陆
-					$.ajax({
-						url: '/wiki/api.php',
-						type: 'POST',
-						dataType: "json",
-						data: {
-							action: 'login',
-							lgname: username,
-							lgpassword: passwd,
-							lgtoken: token,
-							format: 'json'
-						},
-						crossDomain: true,
-						success: function (result) {
+							Cookies.set('uid', result.data);
 
-							if(result.login.result == 'Success'){
-
-								Cookies.set('uid', result.login.lguserid, { expires: 7 });
-								
-								app.navigate("nodes", {trigger: true});
-								
-								//location.reload();
-
+							if(that.$('input:checkbox')[0].checked){
+								Cookies.set('username', email);
 							} else {
-								var n = noty({
-									text: result.login.result,
-									type: 'error'
-								});
-
-								$button.isLoading("hide").text('登陆');
+								Cookies.remove('username');
 							}
 
-						},
-						error: function (xhr, ajaxOptions, thrownError) {
+							window.app.navigate("query", {trigger: true});
+						}
+						else {
 							var n = noty({
 								text: '登陆失败',
 								type: 'error'
 							});
-							$button.isLoading("hide").text('登陆');
 						}
-					});
-				},
-				error: function (xhr, ajaxOptions, thrownError) {
-					var n = noty({
-						text: 'Wiki后台没有反应',
-						type: 'error'
-					});
-					$button.isLoading("hide").text('登陆');
-				}
-			});
-
-			if(that.$('input:checkbox')[0].checked){
-				Cookies.set('username', email);
-			} else {
-				Cookies.remove('username');
-			}
-
+						
+					},
+					error: function (xhr, ajaxOptions, thrownError) {
+						var n = noty({
+							text: '后台错误',
+							type: 'error'
+						});
+					}
+				});
+    		}
+			
 		});
 
 		if(Cookies.get('username') != null) {

@@ -3,6 +3,7 @@ package org.tfelab.health;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.tfelab.common.db.Refacter;
+import org.tfelab.health.route.SectionRoute;
 import org.tfelab.health.route.UserRoute;
 
 import static spark.Spark.port;
@@ -23,6 +24,7 @@ public class ServerWrapper {
 		staticFileLocation("/www");
 		
 		new UserRoute();
+		new SectionRoute();
 	}
 	
 	public static void initdb(){

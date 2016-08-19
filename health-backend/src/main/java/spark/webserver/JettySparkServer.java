@@ -24,6 +24,8 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.CountDownLatch;
 
+import javax.servlet.DispatcherType;
+
 import org.eclipse.jetty.rewrite.handler.RedirectPatternRule;
 import org.eclipse.jetty.rewrite.handler.RewriteHandler;
 import org.eclipse.jetty.rewrite.handler.RewritePatternRule;
@@ -33,7 +35,9 @@ import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.ServerConnector;
 import org.eclipse.jetty.server.handler.HandlerList;
+import org.eclipse.jetty.server.handler.ResourceHandler;
 import org.eclipse.jetty.servlet.ServletContextHandler;
+import org.eclipse.jetty.util.resource.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -129,20 +133,39 @@ public class JettySparkServer implements SparkServer {
             RewriteHandler rewrite = new RewriteHandler();
             rewrite.setRewriteRequestURI(true);
             rewrite.setRewritePathInfo(true);
-            rewrite.setOriginalPathAttribute("/index.html");
+            //rewrite.setOriginalPathAttribute("requestedPath");
             
-            RedirectPatternRule redirect = new RedirectPatternRule();
-            redirect.setPattern("/index.html/*");
-            redirect.setLocation("/index.html"); 
-            rewrite.addRule(redirect);
+//            RewritePatternRule pr = new RewritePatternRule();
+//            pr.setPattern("/a");
+//            pr.setReplacement("/css/default.css");
+//            rewrite.addRule(pr);
             
-            handlersInList.add(rewrite);
+            RewriteRegexRule rule = new RewriteRegexRule();
+            rule.setRegex("/i/(.*)");
+            rule.setReplacement("/index.html");
+            rewrite.addRule(rule);
+            
+            handlersInList.add(0, rewrite);
+            
+            //rewrite.setHandler(handler);
+            
+//            RedirectPatternRule redirect = new RedirectPatternRule();
+//            redirect.setPattern("/logout");
+//            redirect.setLocation("/index.html"); 
+//            rewrite.addRule(redirect);
+            
+//            RewritePatternRule rule = new RewritePatternRule();
+//            rule.setPattern("/logout");
+//            rule.setReplacement("/index.html"); 
+//            rule.setTerminating(true);
+//            rewrite.addRule(rule);
             
             /**
              * 
              */
             HandlerList handlers = new HandlerList();
             handlers.setHandlers(handlersInList.toArray(new Handler[handlersInList.size()]));
+            
             server.setHandler(handlers);
         }
 

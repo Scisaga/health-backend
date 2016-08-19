@@ -1,3 +1,27 @@
+Backbone.Model.parse = function (resp, options) {
+ 	return resp.data;
+};
+
+Backbone.Collection.parse = function (resp, options) {
+	return resp.data;
+};
+
+function showLocation(r){
+    if(this.getStatus() == BMAP_STATUS_SUCCESS){//定位成功
+        //新建中心点 并将地图中心移动过去
+        var centerPoint = new BMap.Point(r.longitude,r.latitude);
+        map.panTo(centerPoint);
+        map.setCenter(centerPoint);
+        //新建标注
+        var mk = new BMap.Marker(centerPoint);
+        mk.disableDragging();// 不可拖拽
+        map.addOverlay(mk);
+    }
+    else {
+        alert('failed: '+this.getStatus());//定位失败
+    }        
+}
+
 $.fn.peity.defaults.line = {
 	delimiter: ",",
 	fill: "#c6d9fd",
@@ -10,7 +34,7 @@ $.fn.peity.defaults.line = {
 }
 
 $.noty.defaults = {
-    layout           : 'bottom',
+    layout           : 'topCenter',
     theme            : 'relax',
     type             : 'alert',
     text             : '', 
@@ -43,13 +67,19 @@ $.noty.defaults = {
 };
 
 $.ajax({
-	url: 'scripts/LoginView.js',
+	url: '/scripts/LoginView.js',
 	dataType: "script",
 	async: false
 });
 
 $.ajax({
-	url: 'scripts/LoginView.js',
+	url: '/scripts/UserView.js',
+	dataType: "script",
+	async: false
+});
+
+$.ajax({
+	url: '/scripts/QueryFormView.js',
 	dataType: "script",
 	async: false
 });
@@ -63,6 +93,8 @@ $(function(){
 
 	    	// $('#container').empty();
 	    	// $('.navbar').remove();
+
+
 	    },
 
 	    execute: function(callback, args, name) {
@@ -76,13 +108,15 @@ $(function(){
 	    },
 
 		routes : {
-	        ''				: 'showUser',
-	        'pick'			: 'showNodes',
+	        'user'			: 'showUser',
 	        'login'			: 'showLoginForm',
+	        'query'			: 'showQueryForm',
 			
 	        'logout'		: 'logout',
 
-	        '*route'		: 'back',
+	        ''				: 'showUser',
+
+	        //'*route'		: 'showLoginForm',
 	    },
 
 	    back: function(){
@@ -100,31 +134,58 @@ $(function(){
 	        $('#container').empty();
 			
 			var loginView = new LoginView();
-			loginView.render();
-			
-			console.log(loginView.$el);
 			$('#container').append(loginView.$el);
+			
+			loginView.render();
 
-	        //var loginView = new LoginView();
-			//loginView.render();
-			//$('#container').append(loginView.$el);
 	    },
 
 	    showUser: function(){
 
+	    	var that = this;
+
 	    	$('.navbar').remove();
-	    	$('body').prepend(tpl.get('Nav.html'));
+			
+			$.get('/templates/Nav.html', function(data) {
+				$('body').prepend(data);
+				$('#logout').click(function(){
+		    		that.navigate("#logout", {trigger: true});
+		    	});
+			});
+
+			$('#container').empty();
 
 	        var user = new User({id : Cookies.get('uid')});
 	        user.fetch({
 	        	success: function(model, response, options){
 	        		var userView = new UserView({ model : model });
 					userView.render();
-					$('.navbar-header').append(userView.$el);
+					$('#container').append(userView.$el);
 	        	}
 	        });
+		
+	    },
 
-	    	$('#container').empty();
+	    showQueryForm: function(){
+
+	    	var that = this;
+
+	    	$('.navbar').remove();
+			
+			$.get('/templates/Nav.html', function(data) {
+				$('body').prepend(data);
+				$('#logout').click(function(){
+		    		that.navigate("#logout", {trigger: true});
+		    	});
+			});
+
+			$('#container').empty();
+
+			var view = new QueryFormView();
+
+			$('#container').append(view.$el);
+
+			view.render();
 		
 	    },
 
@@ -134,10 +195,12 @@ $(function(){
 	    	$('.navbar').remove();
 
 	        Cookies.remove('uid');
+
+	        this.navigate('login', {trigger: true});
 	    }
 	});
 
 	window.app = new AppRouter();
-	Backbone.history.start({pushState: true, root: "index.html"});
+	Backbone.history.start({pushState: true, root: "/i/"});
 
 });

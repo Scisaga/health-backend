@@ -2,6 +2,7 @@ package org.tfelab.health.route;
 
 import static spark.Spark.post;
 import static spark.Spark.put;
+import static spark.Spark.get;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -23,7 +24,7 @@ public class UserRoute {
 		 * 添加一个用户
 		 * 场景：用户注册
 		 */
-		post("/user", (request, response) -> {
+		post("/users", (request, response) -> {
 
 			try {
 				
@@ -38,10 +39,30 @@ public class UserRoute {
 				}
 				
 				if (user.insert()) {
-					return new Msg<>(Msg.INSERT_SUCCESS);
+					return new Msg<Integer>(Msg.INSERT_SUCCESS, user.id);
 				} else {
 					return new Msg<>(Msg.INSERT_FAILURE);
 				}
+					
+			} catch (Exception e) {
+				logger.error("Error create user.", e);
+				return new Msg<>(Msg.INSERT_FAILURE);
+			}
+			
+		} , new MsgTransformer());
+		
+		/**
+		 * 获取一个用户的信息
+		 */
+		get("/users/:id", (request, response) -> {
+
+			try {
+				
+				int id = Integer.valueOf(request.params(":id"));
+				
+				User user = User.getUserById(id);
+				
+				return new Msg<User>(Msg.INSERT_SUCCESS, user);
 					
 			} catch (Exception e) {
 				logger.error("Error create user.", e);
@@ -53,11 +74,11 @@ public class UserRoute {
 		 * 更新用户
 		 * 场景：用户编辑自己信息
 		 */
-		put("/user", (request, response) -> {
+		put("/users/:id", (request, response) -> {
 
 			try {
 				
-				User user = JSON.fromJSON(request.queryParams("_q"), User.class);
+				User user = JSON.fromJSON(request.body(), User.class);
 				
 				if(user.name == null || user.name.length() == 0){
 					return new Msg<>(Msg.UPDATE_FAILURE);
@@ -97,10 +118,12 @@ public class UserRoute {
 					return new Msg<>(Msg.FAILURE);
 				}
 				
-				User user_db = User.getUserById(user.id);
+				System.err.println(JSON.toJson(user));
 				
-				if (user_db != null && user_db.password == user.password) {
-					return new Msg<>(Msg.SUCCESS);
+				User user_db = User.getUserByName(user.name);
+				
+				if (user_db != null && user_db.password.equals(user.password)) {
+					return new Msg<Integer>(Msg.SUCCESS, user_db.id);
 				} else {
 					return new Msg<>(Msg.FAILURE);
 				}

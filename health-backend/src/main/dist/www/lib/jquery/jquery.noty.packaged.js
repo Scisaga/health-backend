@@ -1406,7 +1406,7 @@ $.noty.themes.relax = {
                 break;
             case 'warning':
                 this.$bar.css({backgroundColor: '#FFEAA8', borderColor: '#FFC237', color: '#826200'});
-                this.$buttons.css({borderTop: 'px solid #FFC237'});
+                this.$buttons.css({borderTop: '1px solid #FFC237'});
                 break;
             case 'error':
                 this.$bar.css({backgroundColor: '#FF8181', borderColor: '#e25353', color: '#FFF'});

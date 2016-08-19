@@ -23,6 +23,6 @@ repositories {
 
 dependencies {
     compile 'org.tfelab:core:0.3.103'
-    compile 'org.eclipse.jetty:jetty-rewrite:9.3.11.M0'
+    compile 'org.eclipse.jetty:jetty-rewrite:9.4.0.M1'
     testCompile 'junit:junit:4.12'
 }

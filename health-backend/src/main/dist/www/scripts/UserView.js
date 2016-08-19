@@ -1,15 +1,27 @@
+var User = Backbone.Model.extend({
+	urlRoot : '/users',
+	parse : function (resp, options) {
+	 	return resp.data;
+	}
+});
+
 var UserView = Backbone.View.extend({
 
 	tagName: 'div',
 	className: 'row',
+	events: {
+		'click .save' : 'save'
+	},
 
 	initialize: function() {
+
+		var that = this;
 
 		$.ajax({
 			url: '/templates/UserView.html', 
 			async: false,
 			success: function(data) {
-				that.$el.append(data);
+				that.template = _.template(data);
 			}
 		});
 
@@ -18,71 +30,39 @@ var UserView = Backbone.View.extend({
 	render: function() {
 
 		var that = this;
-		
-		$.ajax({
-			url: '/templates/UserView.html', 
-			async: false,
-			success: function(data) {
-				that.$el.append(data);
-			}
-		});
-		
-		this.$('button.save').click(function(){
 
-			var username = that.$('#inputUsername').val();
-			var passwd = that.$('#inputPassword').val();
-			
+		this.$el.html(this.template(this.model.attributes));
 
-			// 获取token
-			$.ajax({
-				url: '/user',
-				type: 'POST',
-				dataType: "json",
-				data: {
-					_q: JSON.stringify({
-						name: username,
-						password: passwd
-					})
-				},
-				crossDomain: true,
-				success: function (result) {
+		_.each(this.$(':input'), function(input){
 
-					if(result.code == 111){
-						var n = noty({
-							text: '注册成功',
-							type: 'success'
-						});
-					}
-					else {
-						var n = noty({
-							text: '注册失败',
-							type: 'error'
-						});
-					}
-					
-				},
-				error: function (xhr, ajaxOptions, thrownError) {
+            $(input).on('change', function (e) {
+
+            	that.model.set(input.name, $(input).val());
+            });
+        });
+	},
+
+	save: function() {
+
+		this.model.save(this.model.attributes, {
+
+			success: function (model, res) {
+				if(res.code == 112){
 					var n = noty({
-						text: '后台错误',
+						text: '保存成功',
+						type: 'success'
+					});
+				}
+				else {
+					var n = noty({
+						text: '保存失败',
 						type: 'error'
 					});
 				}
-			});
-
-			if(that.$('input:checkbox')[0].checked){
-				Cookies.set('username', email);
-			} else {
-				Cookies.remove('username');
+				
 			}
-
 		});
-
-
-		if(Cookies.get('username') != null) {
-			that.$('#inputUsername').val(Cookies.get('username'));
-			$(that.$('input:checkbox')[0]).attr({
-				checked: true
-			});
-		}
+		
+		this.render();
 	}
 });

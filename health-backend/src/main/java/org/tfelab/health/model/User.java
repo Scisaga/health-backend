@@ -124,6 +124,16 @@ public class User implements JSONable<User>{
 			
 		return user;
 	}
+	
+	public static User getUserByName(String name) throws Exception{
+		
+		Dao<User, String> dao = OrmLiteDaoManager.getDao(User.class);
+		List<User> users = dao.queryForEq("name", name);
+		
+		if(users.size() > 0) return users.get(0);
+			
+		return null;
+	}
 
 	@Override
 	public String toJSON() {
