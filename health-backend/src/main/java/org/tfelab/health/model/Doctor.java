@@ -9,8 +9,10 @@ import org.tfelab.common.json.JSON;
 import org.tfelab.common.json.JSONable;
 
 import com.j256.ormlite.dao.Dao;
+import com.j256.ormlite.dao.ForeignCollection;
 import com.j256.ormlite.field.DataType;
 import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.field.ForeignCollectionField;
 import com.j256.ormlite.table.DatabaseTable;
 
 @DatabaseTable(tableName = "doctors")
@@ -22,8 +24,8 @@ public class Doctor implements JSONable<Doctor>{
 	@DatabaseField(columnName = "id", dataType = DataType.INTEGER, canBeNull = false, generatedId = true)
 	public int id;
 	
-	@DatabaseField(dataType = DataType.INTEGER, canBeNull = false)
-	public int hospital_id;
+	@DatabaseField(canBeNull = false, foreign = true, foreignAutoRefresh = true)
+	public Hospital hospital;
 	
 	@DatabaseField(dataType = DataType.INTEGER, canBeNull = false)
 	public int section_id;
@@ -47,10 +49,10 @@ public class Doctor implements JSONable<Doctor>{
 	public String brief_intro;
 	
 	@DatabaseField(columnName = "insert_time", dataType = DataType.DATE, canBeNull = false)
-	public Date insert_time = new Date();
+	public transient Date insert_time = new Date();
 	
 	@DatabaseField(dataType = DataType.DATE, columnName = "update_time", canBeNull = false)
-    public Date update_time = new Date();
+    public transient Date update_time = new Date();
 	
 	public Doctor(){}
 	

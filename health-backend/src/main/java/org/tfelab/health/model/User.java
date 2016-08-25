@@ -47,10 +47,10 @@ public class User implements JSONable<User>{
 	public String weixin;
 	
 	@DatabaseField(columnName = "insert_time", dataType = DataType.DATE, canBeNull = false)
-	public Date insert_time = new Date();
+	public transient Date insert_time = new Date();
 	
 	@DatabaseField(dataType = DataType.DATE, columnName = "update_time", canBeNull = false)
-    public Date update_time = new Date();
+    public transient Date update_time = new Date();
 	
 	public User(){}
 	

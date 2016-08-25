@@ -11,6 +11,21 @@ var LoginView = Backbone.View.extend({
 			async: false,
 			success: function(data) {
 				that.$el.append(data);
+
+				if(Cookies.get('username') != null) {
+					that.$('#inputUsername').val(Cookies.get('username'));
+					$(that.$('input:checkbox')[0]).attr({
+						checked: true
+					});
+				}
+
+				if(Cookies.get('passwd') != null) {
+					that.$('#inputPassword').val(Cookies.get('passwd'));
+					$(that.$('input:checkbox')[0]).attr({
+						checked: true
+					});
+				}
+
 				that.$("input[name='remember-me']").bootstrapSwitch({
 					size: 'small',
 				});
@@ -24,7 +39,7 @@ var LoginView = Backbone.View.extend({
 
 		this.$('#inputPassword').bind('keypress', function (event) {
 			if(event.keyCode == '13'){
-				that.$('button').trigger('click');
+				$('button.login').trigger('click');
 			}
 		});
 
@@ -95,9 +110,11 @@ var LoginView = Backbone.View.extend({
 							Cookies.set('uid', result.data);
 
 							if(that.$('input:checkbox')[0].checked){
-								Cookies.set('username', email);
+								Cookies.set('username', username);
+								Cookies.set('passwd', passwd);
 							} else {
 								Cookies.remove('username');
+								Cookies.remove('passwd');
 							}
 
 							window.app.navigate("user", {trigger: true});
@@ -152,9 +169,11 @@ var LoginView = Backbone.View.extend({
 							Cookies.set('uid', result.data);
 
 							if(that.$('input:checkbox')[0].checked){
-								Cookies.set('username', email);
+								Cookies.set('username', username);
+								Cookies.set('passwd', passwd);
 							} else {
 								Cookies.remove('username');
+								Cookies.remove('passwd');
 							}
 
 							window.app.navigate("query", {trigger: true});
@@ -177,13 +196,6 @@ var LoginView = Backbone.View.extend({
     		}
 			
 		});
-
-		if(Cookies.get('username') != null) {
-			that.$('#inputUsername').val(Cookies.get('username'));
-			$(that.$('input:checkbox')[0]).attr({
-				checked: true
-			});
-		}
 	},
 
 	showLoginForm: function(){

@@ -37,6 +37,9 @@ public class Hospital implements JSONable<Hospital>{
 	@DatabaseField(dataType = DataType.STRING, width = 16, canBeNull = true)
 	public String zip_code;
 	
+	@DatabaseField(dataType = DataType.STRING, width = 64, canBeNull = true)
+	public String level;
+	
 	@DatabaseField(dataType = DataType.FLOAT, canBeNull = true)
 	public float longitude = 0;
 	
@@ -44,10 +47,10 @@ public class Hospital implements JSONable<Hospital>{
 	public float latitude = 0;
 	
 	@DatabaseField(columnName = "insert_time", dataType = DataType.DATE, canBeNull = false)
-	public Date insert_time = new Date();
+	public transient Date insert_time = new Date();
 	
 	@DatabaseField(dataType = DataType.DATE, columnName = "update_time", canBeNull = false)
-    public Date update_time = new Date();
+    public transient Date update_time = new Date();
 	
 	public Hospital(){}
 	

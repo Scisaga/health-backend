@@ -10,7 +10,7 @@ import java.util.Map;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.tfelab.common.json.JSON;
-import org.tfelab.health.ServerWrapper;
+import org.tfelab.health.ServiceWrapper;
 import org.tfelab.health.model.User;
 import org.tfelab.io.Msg;
 
@@ -118,7 +118,7 @@ public class UserRoute {
 					return new Msg<>(Msg.FAILURE);
 				}
 				
-				System.err.println(JSON.toJson(user));
+				//System.err.println(JSON.toJson(user));
 				
 				User user_db = User.getUserByName(user.name);
 				

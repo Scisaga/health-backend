@@ -8,7 +8,7 @@ apply plugin: 'application'
 
 sourceCompatibility = 1.8
 
-mainClassName = 'org.tfelab.health.Server'
+mainClassName = 'org.tfelab.health.ServiceWrapper'
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 
 repositories {
@@ -22,7 +22,7 @@ repositories {
 }
 
 dependencies {
-    compile 'org.tfelab:core:0.3.103'
+    compile 'org.tfelab:core:0.3.112'
     compile 'org.eclipse.jetty:jetty-rewrite:9.4.0.M1'
     testCompile 'junit:junit:4.12'
 }

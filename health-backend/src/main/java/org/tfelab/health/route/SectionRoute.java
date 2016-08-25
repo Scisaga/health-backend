@@ -14,7 +14,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.tfelab.common.db.OrmLiteDaoManager;
 import org.tfelab.common.json.JSON;
-import org.tfelab.health.ServerWrapper;
+import org.tfelab.health.ServiceWrapper;
 import org.tfelab.health.model.DoctorService;
 import org.tfelab.health.model.Section;
 import org.tfelab.health.model.User;

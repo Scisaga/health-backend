@@ -8,6 +8,12 @@ body {
 	padding-bottom: 4px;
 }
 
+#intro h2 {
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+
 #intro h3 {
 	text-align: center;
 	margin-bottom: 20px;
@@ -74,8 +80,7 @@ div.info .help-block{
 }
 
 div.info input {
-	color: #fff;
-	background: #666;
+	font-weight: bold;
 }
 
 div.map {
@@ -159,6 +164,97 @@ border: none;
 
 .dropdown-menu {
 	border: none;
+}
+
+div.result-item {
+	background: #ffffcc;
+	color: #333;
+	padding: 10px; 
+	margin-bottom: 10px;
+	border-radius: 6px 6px 6px 6px;
+	box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+}
+
+div.result-item h2 {
+	font-size: 22px;
+	font-weight: bold;
+	margin: 0px 0 6px 0;
+	padding: 0 0 4px 0;
+	border-bottom: 1px solid #ccc;
+}
+
+div.result-item h2 img {
+	float: left;
+	margin: 0 6px 6px 0;
+	background: #fff;
+	border-radius: 32px;
+	border: 1px solid #ccc;
+	box-shadow: inset -1px -1px 6px rgba(0, 0, 0, 0.2);
+}
+
+div.result-item h2 span.position {
+	float: right;
+	font-size: 14px;
+	font-weight: bold;
+	color: #663300;
+	background: #fffff5;
+	padding: 4px 8px;
+	position: relative;
+	top: -3px;
+	border-radius: 4px;
+	border: 1px #f9d118 solid;
+}
+
+
+div.result-item .meta {
+	margin: 4px 0 6px 0;
+}
+
+div.result-item .meta span.rating {
+	font-size: 12px;
+	font-weight: normal;
+	color: #f71852;
+}
+
+div.result-item .meta span.min-charge {
+	float: right;
+	font-weight: normal;
+	color: #660000;
+}
+
+div.result-item div.good-at {
+	color: #5e5e5e;
+	line-height: 22px;
+}
+
+div.result-item div.hospital {
+	font-weight: bold;
+	margin-top: 6px;
+	padding-top: 4px;
+	text-align: center;
+	border-top: 1px #ccc dotted;
+	color: #333;
+}
+
+div.result-item div.hospital span.level{
+	font-weight: normal;
+	text-align: center;
+	color: #036;
+	clear: both;
+}
+
+div.result-item div.hospital span.address{
+	font-weight: normal;
+	text-align: center;
+	color: #333;
+	clear: both;
+}
+
+div.result-item div.hospital span.distance {
+	font-size: 24px;
+	float: right;
+	font-weight: normal;
+	color: #006600;
 }
 
 .panel-heading-button-group {
@@ -405,8 +501,4 @@ button a {
 .carousel-indicators li{
 	border: 1px solid #333;
 	background-color: #666;
-}
-#user-form input {
-	color: #fff;
-    background: rgba(0, 0, 0, 0.5);
 }

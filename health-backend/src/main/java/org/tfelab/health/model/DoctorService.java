@@ -22,8 +22,8 @@ public class DoctorService implements JSONable<DoctorService>{
 	@DatabaseField(columnName = "id", dataType = DataType.INTEGER, canBeNull = false, generatedId = true)
 	public int id;
 	
-	@DatabaseField(dataType = DataType.INTEGER, canBeNull = false)
-	public int doctor_id;
+	@DatabaseField(canBeNull = false, foreign = true, foreignAutoRefresh = true)
+	public Doctor doctor;
 	
 	@DatabaseField(dataType = DataType.STRING, width = 64, canBeNull = true)
 	public String name;
@@ -32,13 +32,15 @@ public class DoctorService implements JSONable<DoctorService>{
 	public float min_charge;
 	
 	@DatabaseField(dataType = DataType.STRING, width = 1024, canBeNull = true)
-	public String memo;
+	public transient String memo;
 	
 	@DatabaseField(columnName = "insert_time", dataType = DataType.DATE, canBeNull = false)
-	public Date insert_time = new Date();
+	public transient Date insert_time = new Date();
 	
 	@DatabaseField(dataType = DataType.DATE, columnName = "update_time", canBeNull = false)
-    public Date update_time = new Date();
+    public transient Date update_time = new Date();
+	
+	public double distance = 0;
 	
 	public DoctorService(){}
 	

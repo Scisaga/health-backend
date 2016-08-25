@@ -3,28 +3,31 @@ package org.tfelab.health;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.tfelab.common.db.Refacter;
+import org.tfelab.health.route.QueryRoute;
 import org.tfelab.health.route.SectionRoute;
 import org.tfelab.health.route.UserRoute;
 
 import static spark.Spark.port;
-import static spark.Spark.staticFileLocation;
+import static spark.Spark.*;
 
-public class ServerWrapper {
+public class ServiceWrapper {
 	
-	public static final Logger logger = LogManager.getLogger(ServerWrapper.class.getName());
+	public static final Logger logger = LogManager.getLogger(ServiceWrapper.class.getName());
 	
-	public ServerWrapper() {
+	public ServiceWrapper() {
 		
 	}
 	
 	public void run() {
-
-		port(10010);
-
-		staticFileLocation("/www");
+		
+		externalStaticFileLocation("www");
+		//staticFileLocation("/www");
+		
+		port(10000);
 		
 		new UserRoute();
 		new SectionRoute();
+		new QueryRoute();
 	}
 	
 	public static void initdb(){
@@ -46,7 +49,7 @@ public class ServerWrapper {
 
 	public static void main(String[] args) {
 		//initdb();
-		new ServerWrapper().run();
+		new ServiceWrapper().run();
 	}
 
 }

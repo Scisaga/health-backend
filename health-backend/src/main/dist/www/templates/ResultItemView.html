@@ -1,0 +1,34 @@
+<div class="result-item">
+	<h2>
+		<img src="/images/Doctor Male-64.png" />
+		<%= doctor.name %> 
+		<span class="position"><%= doctor.position %> <%= doctor.title %> </span>
+		
+	</h2>
+	<div class="meta">
+		<!-- <%= name %>  -->
+		<span class="rating">
+		<% 
+			for(var i=0;i<doctor.rating;i++){ 
+				print('<i class="glyphicon glyphicon-star" data-value="1"></i>')
+			}
+			for(var i=doctor.rating;i<10;i++){ 
+				print('<i class="glyphicon glyphicon-star-empty" data-value="1"></i>') 
+			}
+		%>
+		</span>
+		<span class="min-charge">最低收费：￥<%= min_charge %></span>
+	</div>
+	<!-- <div class="brief-intro"><%= doctor.brief_intro %></div> -->
+	<div class="good-at"><strong>专长</strong>：<%= doctor.good_at %></div>
+	<div class="hospital">
+		<span class="distance"><%= distance %> km</span>
+		<%= doctor.hospital.name %> 
+		<span class="level">
+			<%= doctor.hospital.level %>
+		</span>
+		<span class="address">
+			<%= doctor.hospital.address %>
+		</span>
+	</div>
+</div>

@@ -140,10 +140,16 @@ public class JettySparkServer implements SparkServer {
 //            pr.setReplacement("/css/default.css");
 //            rewrite.addRule(pr);
             
+            RedirectPatternRule rule_ = new RedirectPatternRule();
+            rule_.setPattern("");
+            rule_.setLocation("/i/");
+            rewrite.addRule(rule_);
+            
             RewriteRegexRule rule = new RewriteRegexRule();
             rule.setRegex("/i/(.*)");
             rule.setReplacement("/index.html");
             rewrite.addRule(rule);
+            
             
             handlersInList.add(0, rewrite);
             
