@@ -3,6 +3,8 @@ package org.tfelab.health;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.tfelab.common.db.Refacter;
+import org.tfelab.health.model.DoctorComment;
+import org.tfelab.health.model.DoctorService;
 import org.tfelab.health.route.QueryRoute;
 import org.tfelab.health.route.SectionRoute;
 import org.tfelab.health.route.UserRoute;
@@ -20,8 +22,8 @@ public class ServiceWrapper {
 	
 	public void run() {
 		
-		externalStaticFileLocation("www");
-		//staticFileLocation("/www");
+		//externalStaticFileLocation("www");
+		staticFileLocation("www");
 		
 		port(10000);
 		
@@ -36,7 +38,7 @@ public class ServiceWrapper {
 		
 		try {
 			
-			Refacter.dropTables("org.tfelab.health.model");
+			//Refacter.dropTables("org.tfelab.health.model");
 			Refacter.createTables("org.tfelab.health.model");
 	
 			logger.info("Create tables done.");
@@ -47,9 +49,10 @@ public class ServiceWrapper {
 	}
 	
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		//initdb();
-		new ServiceWrapper().run();
+		Refacter.createTable(DoctorComment.class);
+		//new ServiceWrapper().run();
 	}
 
 }
