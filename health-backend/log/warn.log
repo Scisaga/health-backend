@@ -2361,3 +2361,57 @@ Caused by: com.mchange.v2.resourcepool.CannotAcquireResourceException: A Resourc
 	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool.checkoutPooledConnection(C3P0PooledConnectionPool.java:685) ~[c3p0-0.9.5.1.jar:0.9.5.1]
 	... 31 more
 
+2016-09-21 @ 17:04:24 CST ERROR [org.tfelab.common.db.Refacter:107] createTables - Error create DB for org.tfelab.health.model.DoctorComment. java.sql.SQLException: Connections could not be acquired from the underlying database!
+	at com.mchange.v2.sql.SqlUtils.toSQLException(SqlUtils.java:118) ~[mchange-commons-java-0.2.10.jar:0.2.10]
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool.checkoutPooledConnection(C3P0PooledConnectionPool.java:692) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.c3p0.impl.AbstractPoolBackedDataSource.getConnection(AbstractPoolBackedDataSource.java:140) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.j256.ormlite.jdbc.DataSourceConnectionSource.getReadWriteConnection(DataSourceConnectionSource.java:120) ~[ormlite-jdbc-4.48.jar:?]
+	at com.j256.ormlite.jdbc.DataSourceConnectionSource.getReadOnlyConnection(DataSourceConnectionSource.java:102) ~[ormlite-jdbc-4.48.jar:?]
+	at com.j256.ormlite.dao.BaseDaoImpl.isTableExists(BaseDaoImpl.java:689) ~[ormlite-core-4.48.jar:?]
+	at org.tfelab.common.db.Refacter.createTables(Refacter.java:99) [core-0.3.112.jar:?]
+	at org.tfelab.common.db.Refacter.createTable(Refacter.java:36) [core-0.3.112.jar:?]
+	at org.tfelab.health.ServiceWrapper.main(ServiceWrapper.java:54) [bin/:?]
+Caused by: com.mchange.v2.resourcepool.CannotAcquireResourceException: A ResourcePool could not acquire a resource from its primary factory or source.
+	at com.mchange.v2.resourcepool.BasicResourcePool.awaitAvailable(BasicResourcePool.java:1469) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.resourcepool.BasicResourcePool.prelimCheckoutResource(BasicResourcePool.java:644) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.resourcepool.BasicResourcePool.checkoutResource(BasicResourcePool.java:554) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool.checkoutAndMarkConnectionInUse(C3P0PooledConnectionPool.java:758) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool.checkoutPooledConnection(C3P0PooledConnectionPool.java:685) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	... 7 more
+
+2016-09-21 @ 17:30:44 CST ERROR [org.tfelab.common.db.Refacter:107] createTables - Error create DB for org.tfelab.health.model.DoctorComment. java.sql.SQLException: Connections could not be acquired from the underlying database!
+	at com.mchange.v2.sql.SqlUtils.toSQLException(SqlUtils.java:118) ~[mchange-commons-java-0.2.10.jar:0.2.10]
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool.checkoutPooledConnection(C3P0PooledConnectionPool.java:692) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.c3p0.impl.AbstractPoolBackedDataSource.getConnection(AbstractPoolBackedDataSource.java:140) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.j256.ormlite.jdbc.DataSourceConnectionSource.getReadWriteConnection(DataSourceConnectionSource.java:120) ~[ormlite-jdbc-4.48.jar:?]
+	at com.j256.ormlite.jdbc.DataSourceConnectionSource.getReadOnlyConnection(DataSourceConnectionSource.java:102) ~[ormlite-jdbc-4.48.jar:?]
+	at com.j256.ormlite.dao.BaseDaoImpl.isTableExists(BaseDaoImpl.java:689) ~[ormlite-core-4.48.jar:?]
+	at org.tfelab.common.db.Refacter.createTables(Refacter.java:99) [core-0.3.112.jar:?]
+	at org.tfelab.common.db.Refacter.createTable(Refacter.java:36) [core-0.3.112.jar:?]
+	at org.tfelab.health.ServiceWrapper.main(ServiceWrapper.java:54) [bin/:?]
+Caused by: com.mchange.v2.resourcepool.CannotAcquireResourceException: A ResourcePool could not acquire a resource from its primary factory or source.
+	at com.mchange.v2.resourcepool.BasicResourcePool.awaitAvailable(BasicResourcePool.java:1469) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.resourcepool.BasicResourcePool.prelimCheckoutResource(BasicResourcePool.java:644) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.resourcepool.BasicResourcePool.checkoutResource(BasicResourcePool.java:554) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool.checkoutAndMarkConnectionInUse(C3P0PooledConnectionPool.java:758) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool.checkoutPooledConnection(C3P0PooledConnectionPool.java:685) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	... 7 more
+
+2016-09-21 @ 17:30:54 CST ERROR [org.tfelab.common.db.Refacter:107] createTables - Error create DB for org.tfelab.health.model.DoctorComment. java.sql.SQLException: Connections could not be acquired from the underlying database!
+	at com.mchange.v2.sql.SqlUtils.toSQLException(SqlUtils.java:118) ~[mchange-commons-java-0.2.10.jar:0.2.10]
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool.checkoutPooledConnection(C3P0PooledConnectionPool.java:692) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.c3p0.impl.AbstractPoolBackedDataSource.getConnection(AbstractPoolBackedDataSource.java:140) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.j256.ormlite.jdbc.DataSourceConnectionSource.getReadWriteConnection(DataSourceConnectionSource.java:120) ~[ormlite-jdbc-4.48.jar:?]
+	at com.j256.ormlite.jdbc.DataSourceConnectionSource.getReadOnlyConnection(DataSourceConnectionSource.java:102) ~[ormlite-jdbc-4.48.jar:?]
+	at com.j256.ormlite.dao.BaseDaoImpl.isTableExists(BaseDaoImpl.java:689) ~[ormlite-core-4.48.jar:?]
+	at org.tfelab.common.db.Refacter.createTables(Refacter.java:99) [core-0.3.112.jar:?]
+	at org.tfelab.common.db.Refacter.createTable(Refacter.java:36) [core-0.3.112.jar:?]
+	at org.tfelab.health.ServiceWrapper.main(ServiceWrapper.java:54) [bin/:?]
+Caused by: com.mchange.v2.resourcepool.CannotAcquireResourceException: A ResourcePool could not acquire a resource from its primary factory or source.
+	at com.mchange.v2.resourcepool.BasicResourcePool.awaitAvailable(BasicResourcePool.java:1469) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.resourcepool.BasicResourcePool.prelimCheckoutResource(BasicResourcePool.java:644) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.resourcepool.BasicResourcePool.checkoutResource(BasicResourcePool.java:554) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool.checkoutAndMarkConnectionInUse(C3P0PooledConnectionPool.java:758) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool.checkoutPooledConnection(C3P0PooledConnectionPool.java:685) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	... 7 more
+
