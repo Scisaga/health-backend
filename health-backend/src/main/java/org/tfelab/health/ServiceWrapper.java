@@ -9,6 +9,7 @@ import org.tfelab.health.route.QueryRoute;
 import org.tfelab.health.route.SectionRoute;
 import org.tfelab.health.route.UserRoute;
 import org.tfelab.health.route.CommentRoute;//new
+import org.tfelab.health.route.DoctorRoute;
 
 import static spark.Spark.port;
 import static spark.Spark.*;
@@ -32,6 +33,7 @@ public class ServiceWrapper {
 		new SectionRoute();
 		new QueryRoute();
 		new CommentRoute();//new
+		new DoctorRoute();
 	}
 	
 	public static void initdb(){
@@ -53,7 +55,6 @@ public class ServiceWrapper {
 
 	public static void main(String[] args) throws Exception {
 		//initdb();
-		//Refacter.createTable(DoctorComment.class);//new
 		new ServiceWrapper().run();
 	}
 

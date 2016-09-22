@@ -1,121 +1,100 @@
 package org.tfelab.health.route;
 
 import static spark.Spark.post;
-import static spark.Spark.put;
 import static spark.Spark.get;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
-
-import javax.xml.stream.events.Comment;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.tfelab.common.db.OrmLiteDaoManager;
+import org.tfelab.common.db.PooledDataSource;
 import org.tfelab.common.json.JSON;
 import org.tfelab.common.json.JSONable;
-import org.tfelab.health.ServiceWrapper;
-import org.tfelab.health.model.Doctor;
 import org.tfelab.health.model.DoctorComment;
 import org.tfelab.health.model.DoctorService;
-import org.tfelab.health.model.Hospital;
-import org.tfelab.health.model.Section;
-import org.tfelab.health.model.User;
 import org.tfelab.io.Msg;
 
-import com.j256.ormlite.dao.Dao;
-import com.j256.ormlite.dao.GenericRawResults;
-import com.j256.ormlite.stmt.PreparedQuery;
-import com.j256.ormlite.stmt.QueryBuilder;
-import com.j256.ormlite.stmt.Where;
-
 public class CommentRoute {
-	
+
 	public static final Logger logger = LogManager.getLogger(CommentRoute.class.getName());
 
-    public CommentRoute() {
-	   
-	   post("/comments", (request, response) -> {
+	public CommentRoute() {
+
+		post("/comments", (request, response) -> {
 
 			try {
-				
+
 				DoctorComment comment = JSON.fromJSON(request.queryParams("_q"), DoctorComment.class);
-				
+
 				if (comment.insert()) {
+					
+					Connection conn = PooledDataSource.getDataSource("health").getConnection();
+					Statement stat = conn.createStatement();
+					String sql = "SELECT avg(rating) AS r FROM doctor_comments WHERE doctor_id = " + comment.doctor.id;
+					ResultSet rs = stat.executeQuery(sql);
+					
+					float r = 0;
+					if(rs.next()) {
+						r = rs.getFloat(1);
+					}
+					
+					comment.doctor.rating = r;
+					comment.doctor.update();
+					rs.close();
+					stat.close();
+					conn.close();
+					
+					
 					return new Msg<Integer>(Msg.INSERT_SUCCESS, comment.id);
 				} else {
 					return new Msg<>(Msg.INSERT_FAILURE);
 				}
-				
+
 			} catch (Exception e) {
 				logger.error("Error create user.", e);
 				return new Msg<>(Msg.FAILURE);
 			}
-			
-			
-		}, new MsgTransformer());
-	   
-	   get("/comments", (request, response) -> {
+
+		} , new MsgTransformer());
+
+		get("/comments", (request, response) -> {
 
 			try {
 				
-				Dao<DoctorComment, String> dao = OrmLiteDaoManager.getDao(DoctorComment.class);
-					
-			    List<DoctorComment> comments = dao.queryForAll();
+				Query q = JSON.fromJSON(request.queryParams("_q"), Query.class);
 				
-			    List result = new ArrayList<String>();
-				
-				for(DoctorComment comment : comments) {
-					result.add(comment.content);
-					result.add(comment.rating);
-					result.add(comment.disease);
-				}
-				
-				return new Msg<List>(Msg.SUCCESS, result);
-					
+				List<DoctorComment> comments = DoctorComment.getCommentsByDoctorId(q.doctor_id, q.limit, q.offset);
+
+				return new Msg<List<DoctorComment>>(Msg.SUCCESS, comments);
+
 			} catch (Exception e) {
 				logger.error("Error get comments.", e);
 				return new Msg<>(Msg.FAILURE);
 			}
 		} , new MsgTransformer());
-		
-		
-		
-		
+
 	}
-   static List<DoctorService> getDoctorsDetail(Query query) throws Exception{
-	  
-	   Dao<Doctor, String> doctorDao = OrmLiteDaoManager.getDao(Doctor.class);
-	   
-	   QueryBuilder<Doctor, String> qb = doctorDao.queryBuilder();
-	  
-	   Where<Doctor, String> where = qb.where();
-	   
-	   
-	   //return result;
-   }
-   
-   public static void main(String[] args){
-	   
-	   
-	   
-   }
-   class Query implements JSONable<DoctorService> {
-		
-		public Object doctor_id;
-		int user_id;
-        
+
+	class Query implements JSONable<DoctorService> {
+
+		public int doctor_id;
+
 		long offset = 0;
-		long limit = 1;
+		long limit = 10;
 		
+		public Query(){}
+
 		@Override
 		public String toJSON() {
-			
+
 			return JSON.toJSON(this);
 		}
+	}
+
+	public static void main(String[] args) {
+
 	}
 
 }

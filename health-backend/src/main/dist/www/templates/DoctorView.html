@@ -1,0 +1,32 @@
+<div class="col-xs-12 col-md-6 col-md-offset-3">
+	<h2>
+		<img src="/images/Doctor Male-64.png" />
+		<%= name %> 
+		<span class="position"><%= position %> <%= title %> </span>
+		
+	</h2>
+	<div class="meta">
+		<!-- <%= name %>  -->
+		<span class="rating">
+		<% 
+			for(var i=0;i<rating;i++){ 
+				print('<i class="glyphicon glyphicon-star" data-value="1"></i>')
+			}
+			for(var i=rating;i<10;i++){ 
+				print('<i class="glyphicon glyphicon-star-empty" data-value="1"></i>') 
+			}
+		%>
+		</span>
+	</div>
+	<div class="brief-intro"><%= brief_intro %></div>
+	<div class="good-at"><strong>专长</strong>：<%= good_at %></div>
+	<div class="hospital">
+		<%= hospital.name %> 
+		<span class="level">
+			<%= hospital.level %>
+		</span>
+		<span class="address">
+			<%= hospital.address %>
+		</span>
+	</div>
+</div>

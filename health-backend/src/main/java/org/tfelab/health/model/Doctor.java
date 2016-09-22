@@ -112,6 +112,14 @@ public class Doctor implements JSONable<Doctor>{
 		
 		return false;
 	}
+	
+	public static Doctor getDoctorById(int id) throws Exception{
+		
+		Dao<Doctor, String> dao = OrmLiteDaoManager.getDao(Doctor.class);
+		Doctor doctor = dao.queryForId(String.valueOf(id));
+			
+		return doctor;
+	}
 
 	@Override
 	public String toJSON() {

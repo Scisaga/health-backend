@@ -281,6 +281,87 @@ div.result-item div.hospital span.distance {
 	-webkit-filter: drop-shadow(0px 0px 2px #666);
 }
 
+div.result-item {
+	background: #ffffcc;
+	color: #333;
+	padding: 10px; 
+	margin-bottom: 10px;
+	border-radius: 6px 6px 6px 6px;
+	box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+}
+
+div.result-item h2 {
+	font-size: 22px;
+	font-weight: bold;
+	margin: 0px 0 6px 0;
+	padding: 0 0 4px 0;
+	border-bottom: 1px solid #ccc;
+}
+
+.doctor h2 img {
+	float: left;
+	margin: 0 6px 6px 0;
+	background: #fff;
+	border-radius: 32px;
+	border: 1px solid #ccc;
+	box-shadow: inset -1px -1px 6px rgba(0, 0, 0, 0.2);
+}
+
+.doctor h2 span.position {
+	float: right;
+	font-size: 14px;
+	font-weight: bold;
+	color: #663300;
+	background: #fffff5;
+	padding: 4px 8px;
+	position: relative;
+	top: -3px;
+	border-radius: 4px;
+	border: 1px #f9d118 solid;
+}
+
+
+.doctor .meta {
+	margin: 4px 0 6px 0;
+}
+
+.doctor .meta span.rating {
+	font-size: 12px;
+	font-weight: normal;
+	color: #f71852;
+}
+
+.doctor {
+	background: #f4f4f4;
+}
+
+.doctor div.good-at {
+	color: #5e5e5e;
+	line-height: 22px;
+}
+
+.doctor div.hospital {
+	font-weight: bold;
+	margin-top: 6px;
+	padding-top: 4px;
+	padding-bottom: 10px;
+	border-top: 1px #ccc dotted;
+	color: #333;
+}
+
+.doctor div.hospital span.level{
+	font-weight: normal;
+	color: #036;
+	clear: both;
+}
+
+.doctor div.hospital span.address{
+	font-weight: normal;
+	text-align: center;
+	color: #333;
+	clear: both;
+}
+
 .is-dragging {
 	-webkit-filter: drop-shadow(0px 0px 4px #7FFFD4);
 }

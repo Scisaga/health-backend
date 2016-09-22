@@ -75,6 +75,11 @@ $.ajax({
 	async: false
 });
 
+$.ajax({
+	url: '/scripts/DoctorView.js',
+	dataType: "script",
+	async: false
+});
 
 $(function(){
 
@@ -111,6 +116,7 @@ $(function(){
 	        'login'			: 'showLoginForm',
 	        'query'			: 'showQueryForm',
 			'query/:section_id/:service/:preference/:log/:lat'	: 'showResult',
+			'doctor/:id'	: 'showDoctor',
 
 	        'logout'		: 'logout',
 
@@ -170,6 +176,20 @@ $(function(){
 			$('#container').append(view.$el);
 
 			view.render(section_id, service, preference, log, lat);
+
+	    },
+
+	    showDoctor: function(id) {
+	    	$('#container').empty();
+
+	        var doctor = new Doctor({id : id});
+	        doctor.fetch({
+	        	success: function(model, response, options){
+	        		var view = new DoctorView({ model : model });
+					view.render();
+					$('#container').append(view.$el);
+	        	}
+	        });
 
 	    },
 
