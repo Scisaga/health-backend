@@ -270,6 +270,7 @@ div.result-item div.hospital span.distance {
 	top: 1px;
 	font-size: 16px;
 	color: #e61b33;
+	padding-top: 7px;
 }
 
 .snapshot-icon {
@@ -360,6 +361,18 @@ div.result-item h2 {
 	text-align: center;
 	color: #333;
 	clear: both;
+}
+
+
+.comment {
+	padding: 6px;
+	background: #e4e4e4;
+	border-radius: 4px;
+	margin-bottom: 12px;
+}
+
+.comment .form-horizontal .form-group {
+	margin-bottom: 6px;
 }
 
 .is-dragging {

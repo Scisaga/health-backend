@@ -230,15 +230,13 @@ public class QueryRoute {
 				"ORDER BY r DESC " +
 				"LIMIT " + query.limit + " OFFSET " + query.offset + ";";
 		
-		logger.info(sql);
+		//logger.info(sql);
 		
 		Dao<DoctorService, String> doctorServiceDao = OrmLiteDaoManager.getDao(DoctorService.class);
 		GenericRawResults<String[]> records = doctorServiceDao.queryRaw(sql);
 		
 		List<DoctorService> result = new ArrayList<DoctorService>();
 		for(String[] record : records) {
-			
-			System.err.println(record);
 			
 			DoctorService ds = doctorServiceDao.queryForId(record[0]);
 			
