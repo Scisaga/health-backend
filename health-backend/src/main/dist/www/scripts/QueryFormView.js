@@ -79,8 +79,8 @@ var QueryFormView = Backbone.View.extend({
 				        that.log = r.longitude;
 				        that.lat = r.latitude;
 
-				        // console.log(that.log);
-				        // console.log(that.lat);
+				        console.log(that.log);
+				        console.log(that.lat);
 
 				        map.centerAndZoom(centerPoint, 15);
 				        map.panTo(centerPoint);

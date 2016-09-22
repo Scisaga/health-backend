@@ -56,6 +56,8 @@ public class QueryRoute {
 				
 				Query q = JSON.fromJSON(request.queryParams("_q"), Query.class);
 				
+				logger.info(JSON.toJson(q));
+				
 				if(q.preference == 1){
 					return new Msg<List<DoctorService>>(Msg.SUCCESS, getNearestDoctors(q));
 				}
@@ -228,11 +230,15 @@ public class QueryRoute {
 				"ORDER BY r DESC " +
 				"LIMIT " + query.limit + " OFFSET " + query.offset + ";";
 		
+		logger.info(sql);
+		
 		Dao<DoctorService, String> doctorServiceDao = OrmLiteDaoManager.getDao(DoctorService.class);
 		GenericRawResults<String[]> records = doctorServiceDao.queryRaw(sql);
 		
 		List<DoctorService> result = new ArrayList<DoctorService>();
 		for(String[] record : records) {
+			
+			System.err.println(record);
 			
 			DoctorService ds = doctorServiceDao.queryForId(record[0]);
 			
@@ -241,13 +247,14 @@ public class QueryRoute {
 			result.add(ds);
 		}
 		
+		
 		return result;
 	}
 	
 	public static void main(String[] args){
 		
 		Query q = new Query();
-		q.section_id = 2;
+		q.section_id = 1;
 		q.service = "图文问诊";
 		q.preference = 0;
 		q.log = 116.2839127;
