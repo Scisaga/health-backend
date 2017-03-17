@@ -2415,3 +2415,11 @@ Caused by: com.mchange.v2.resourcepool.CannotAcquireResourceException: A Resourc
 	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool.checkoutPooledConnection(C3P0PooledConnectionPool.java:685) ~[c3p0-0.9.5.1.jar:0.9.5.1]
 	... 7 more
 
+2017-01-19 @ 13:08:14 CST WARN  [spark.staticfiles.StaticFilesFolder:27] externalConfiguredTo - Registering external static files folder [www] as [D:/git/health-backend/health-backend/www].
+2017-01-19 @ 13:09:34 CST WARN  [spark.staticfiles.StaticFilesFolder:27] externalConfiguredTo - Registering external static files folder [www] as [D:/git/health-backend/health-backend/www].
+2017-01-19 @ 14:10:36 CST WARN  [spark.staticfiles.StaticFilesFolder:27] externalConfiguredTo - Registering external static files folder [www] as [D:/git/health-backend/health-backend/www].
+2017-01-19 @ 14:11:16 CST WARN  [spark.staticfiles.StaticFilesFolder:27] externalConfiguredTo - Registering external static files folder [www] as [D:/git/health-backend/health-backend/www].
+2017-01-19 @ 14:13:32 CST WARN  [spark.staticfiles.StaticFilesFolder:27] externalConfiguredTo - Registering external static files folder [www] as [D:/git/health-backend/health-backend/www].
+2017-01-19 @ 14:18:47 CST WARN  [spark.staticfiles.StaticFilesFolder:27] externalConfiguredTo - Registering external static files folder [www] as [D:/git/health-backend/health-backend/www].
+2017-01-20 @ 14:44:35 CST WARN  [spark.staticfiles.StaticFilesFolder:27] externalConfiguredTo - Registering external static files folder [www] as [D:/git/health-backend/health-backend/www].
+2017-01-20 @ 14:48:19 CST WARN  [spark.staticfiles.StaticFilesFolder:27] externalConfiguredTo - Registering external static files folder [www] as [D:/git/health-backend/health-backend/www].

@@ -92,9 +92,4 @@ public class CommentRoute {
 			return JSON.toJSON(this);
 		}
 	}
-
-	public static void main(String[] args) {
-
-	}
-
 }

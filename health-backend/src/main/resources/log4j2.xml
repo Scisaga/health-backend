@@ -33,7 +33,7 @@
     </appenders>
 
     <loggers>
-        <root level="trace">
+        <root level="info">
             <appender-ref ref="Console"/>
             <appender-ref ref="info-log"/>
             <appender-ref ref="warn-log"/>

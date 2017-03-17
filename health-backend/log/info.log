@@ -2730,3 +2730,123 @@ Caused by: com.mchange.v2.resourcepool.CannotAcquireResourceException: A Resourc
 2016-09-22 @ 20:13:42 CST INFO  [org.tfelab.health.route.QueryRoute:59] lambda$0 - {"section_id":1,"service":"图文问诊","preference":0,"log":0.0,"lat":0.0,"offset":0,"limit":10}
 2016-09-22 @ 20:14:26 CST INFO  [org.tfelab.health.route.QueryRoute:59] lambda$0 - {"section_id":1,"service":"图文问诊","preference":0,"log":116.40387397,"lat":39.91488908,"offset":0,"limit":10}
 2016-09-22 @ 20:14:37 CST INFO  [org.tfelab.health.route.QueryRoute:59] lambda$0 - {"section_id":1,"service":"图文问诊","preference":0,"log":116.40387397,"lat":39.91488908,"offset":0,"limit":10}
+2017-01-18 @ 17:47:52 CST INFO  [org.tfelab.health.ServiceWrapper:41] initdb - Creating tables...
+2017-01-18 @ 17:47:56 CST INFO  [org.tfelab.health.ServiceWrapper:48] initdb - Create tables done.
+2017-01-19 @ 13:08:14 CST INFO  [spark.staticfiles.StaticFilesConfiguration:164] configureExternal - External StaticResourceHandler configured with folder = www
+2017-01-19 @ 13:08:14 CST WARN  [spark.staticfiles.StaticFilesFolder:27] externalConfiguredTo - Registering external static files folder [www] as [D:/git/health-backend/health-backend/www].
+2017-01-19 @ 13:08:14 CST INFO  [org.eclipse.jetty.util.log.Log:192] initialized - Logging initialized @1306ms to org.eclipse.jetty.util.log.Slf4jLog
+2017-01-19 @ 13:08:14 CST INFO  [spark.embeddedserver.jetty.EmbeddedJettyServer:149] ignite - == Spark has ignited ...
+2017-01-19 @ 13:08:14 CST INFO  [spark.embeddedserver.jetty.EmbeddedJettyServer:150] ignite - >> Listening on 0.0.0.0:10000
+2017-01-19 @ 13:08:14 CST INFO  [org.eclipse.jetty.server.Server:372] doStart - jetty-9.4.0.v20161208
+2017-01-19 @ 13:08:14 CST INFO  [org.eclipse.jetty.server.session.DefaultSessionIdManager:354] doStart - DefaultSessionIdManager workerName=node0
+2017-01-19 @ 13:08:14 CST INFO  [org.eclipse.jetty.server.session.DefaultSessionIdManager:359] doStart - No SessionScavenger set, using defaults
+2017-01-19 @ 13:08:14 CST INFO  [org.eclipse.jetty.server.session.HouseKeeper:146] startScavenging - Scavenging every 600000ms
+2017-01-19 @ 13:08:14 CST INFO  [org.eclipse.jetty.server.AbstractConnector:280] doStart - Started ServerConnector@24d2317{HTTP/1.1,[http/1.1]}{0.0.0.0:10000}
+2017-01-19 @ 13:08:14 CST INFO  [org.eclipse.jetty.server.Server:444] doStart - Started @1484ms
+2017-01-19 @ 13:09:34 CST INFO  [spark.staticfiles.StaticFilesConfiguration:164] configureExternal - External StaticResourceHandler configured with folder = www
+2017-01-19 @ 13:09:34 CST WARN  [spark.staticfiles.StaticFilesFolder:27] externalConfiguredTo - Registering external static files folder [www] as [D:/git/health-backend/health-backend/www].
+2017-01-19 @ 13:09:34 CST INFO  [org.eclipse.jetty.util.log.Log:192] initialized - Logging initialized @1141ms to org.eclipse.jetty.util.log.Slf4jLog
+2017-01-19 @ 13:09:35 CST INFO  [spark.embeddedserver.jetty.EmbeddedJettyServer:149] ignite - == Spark has ignited ...
+2017-01-19 @ 13:09:35 CST INFO  [spark.embeddedserver.jetty.EmbeddedJettyServer:150] ignite - >> Listening on 0.0.0.0:10000
+2017-01-19 @ 13:09:35 CST INFO  [org.eclipse.jetty.server.Server:372] doStart - jetty-9.4.0.v20161208
+2017-01-19 @ 13:09:35 CST INFO  [org.eclipse.jetty.server.session.DefaultSessionIdManager:354] doStart - DefaultSessionIdManager workerName=node0
+2017-01-19 @ 13:09:35 CST INFO  [org.eclipse.jetty.server.session.DefaultSessionIdManager:359] doStart - No SessionScavenger set, using defaults
+2017-01-19 @ 13:09:35 CST INFO  [org.eclipse.jetty.server.session.HouseKeeper:146] startScavenging - Scavenging every 660000ms
+2017-01-19 @ 13:09:35 CST INFO  [org.eclipse.jetty.server.AbstractConnector:280] doStart - Started ServerConnector@70a5ceeb{HTTP/1.1,[http/1.1]}{0.0.0.0:10000}
+2017-01-19 @ 13:09:35 CST INFO  [org.eclipse.jetty.server.Server:444] doStart - Started @1272ms
+2017-01-19 @ 14:10:36 CST INFO  [spark.staticfiles.StaticFilesConfiguration:164] configureExternal - External StaticResourceHandler configured with folder = www
+2017-01-19 @ 14:10:36 CST WARN  [spark.staticfiles.StaticFilesFolder:27] externalConfiguredTo - Registering external static files folder [www] as [D:/git/health-backend/health-backend/www].
+2017-01-19 @ 14:10:37 CST INFO  [org.reflections.Reflections:229] scan - Reflections took 113 ms to scan 1 urls, producing 2 keys and 3 values 
+2017-01-19 @ 14:10:37 CST INFO  [org.eclipse.jetty.util.log.Log:192] initialized - Logging initialized @1517ms to org.eclipse.jetty.util.log.Slf4jLog
+2017-01-19 @ 14:10:37 CST INFO  [spark.embeddedserver.jetty.EmbeddedJettyServer:149] ignite - == Spark has ignited ...
+2017-01-19 @ 14:10:37 CST INFO  [spark.embeddedserver.jetty.EmbeddedJettyServer:150] ignite - >> Listening on 0.0.0.0:8010
+2017-01-19 @ 14:10:37 CST INFO  [org.eclipse.jetty.server.Server:372] doStart - jetty-9.4.0.v20161208
+2017-01-19 @ 14:10:37 CST INFO  [org.eclipse.jetty.server.session.DefaultSessionIdManager:354] doStart - DefaultSessionIdManager workerName=node0
+2017-01-19 @ 14:10:37 CST INFO  [org.eclipse.jetty.server.session.DefaultSessionIdManager:359] doStart - No SessionScavenger set, using defaults
+2017-01-19 @ 14:10:37 CST INFO  [org.eclipse.jetty.server.session.HouseKeeper:146] startScavenging - Scavenging every 600000ms
+2017-01-19 @ 14:10:37 CST INFO  [org.eclipse.jetty.server.AbstractConnector:280] doStart - Started ServerConnector@6ca88dbe{HTTP/1.1,[http/1.1]}{0.0.0.0:8010}
+2017-01-19 @ 14:10:37 CST INFO  [org.eclipse.jetty.server.Server:444] doStart - Started @1650ms
+2017-01-19 @ 14:11:16 CST INFO  [spark.staticfiles.StaticFilesConfiguration:164] configureExternal - External StaticResourceHandler configured with folder = www
+2017-01-19 @ 14:11:16 CST WARN  [spark.staticfiles.StaticFilesFolder:27] externalConfiguredTo - Registering external static files folder [www] as [D:/git/health-backend/health-backend/www].
+2017-01-19 @ 14:11:16 CST INFO  [org.reflections.Reflections:229] scan - Reflections took 81 ms to scan 1 urls, producing 2 keys and 3 values 
+2017-01-19 @ 14:11:17 CST INFO  [org.eclipse.jetty.util.log.Log:192] initialized - Logging initialized @1294ms to org.eclipse.jetty.util.log.Slf4jLog
+2017-01-19 @ 14:11:17 CST INFO  [spark.embeddedserver.jetty.EmbeddedJettyServer:149] ignite - == Spark has ignited ...
+2017-01-19 @ 14:11:17 CST INFO  [spark.embeddedserver.jetty.EmbeddedJettyServer:150] ignite - >> Listening on 0.0.0.0:8010
+2017-01-19 @ 14:11:17 CST INFO  [org.eclipse.jetty.server.Server:372] doStart - jetty-9.4.0.v20161208
+2017-01-19 @ 14:11:17 CST INFO  [org.eclipse.jetty.server.session.DefaultSessionIdManager:354] doStart - DefaultSessionIdManager workerName=node0
+2017-01-19 @ 14:11:17 CST INFO  [org.eclipse.jetty.server.session.DefaultSessionIdManager:359] doStart - No SessionScavenger set, using defaults
+2017-01-19 @ 14:11:17 CST INFO  [org.eclipse.jetty.server.session.HouseKeeper:146] startScavenging - Scavenging every 600000ms
+2017-01-19 @ 14:11:17 CST INFO  [org.eclipse.jetty.server.AbstractConnector:280] doStart - Started ServerConnector@2548a32a{HTTP/1.1,[http/1.1]}{0.0.0.0:8010}
+2017-01-19 @ 14:11:17 CST INFO  [org.eclipse.jetty.server.Server:444] doStart - Started @1435ms
+2017-01-19 @ 14:13:32 CST INFO  [spark.staticfiles.StaticFilesConfiguration:164] configureExternal - External StaticResourceHandler configured with folder = www
+2017-01-19 @ 14:13:32 CST WARN  [spark.staticfiles.StaticFilesFolder:27] externalConfiguredTo - Registering external static files folder [www] as [D:/git/health-backend/health-backend/www].
+2017-01-19 @ 14:13:32 CST INFO  [org.reflections.Reflections:229] scan - Reflections took 80 ms to scan 1 urls, producing 3 keys and 12 values 
+2017-01-19 @ 14:13:32 CST INFO  [org.tfelab.health.ServiceWrapper:43] <init> - MsgTransformer
+2017-01-19 @ 14:13:32 CST INFO  [org.tfelab.health.ServiceWrapper:43] <init> - DoctorRoute
+2017-01-19 @ 14:13:32 CST INFO  [org.tfelab.health.ServiceWrapper:43] <init> - QueryRoute
+2017-01-19 @ 14:13:32 CST INFO  [org.tfelab.health.ServiceWrapper:43] <init> - CommonRoute
+2017-01-19 @ 14:13:32 CST INFO  [org.tfelab.health.ServiceWrapper:43] <init> - Query
+2017-01-19 @ 14:13:32 CST INFO  [org.tfelab.health.ServiceWrapper:43] <init> - Query
+2017-01-19 @ 14:13:32 CST INFO  [org.tfelab.health.ServiceWrapper:43] <init> - SectionRoute
+2017-01-19 @ 14:13:32 CST INFO  [org.tfelab.health.ServiceWrapper:43] <init> - UserRoute
+2017-01-19 @ 14:13:32 CST INFO  [org.tfelab.health.ServiceWrapper:43] <init> - CommentRoute
+2017-01-19 @ 14:13:32 CST INFO  [org.eclipse.jetty.util.log.Log:192] initialized - Logging initialized @1456ms to org.eclipse.jetty.util.log.Slf4jLog
+2017-01-19 @ 14:13:33 CST INFO  [spark.embeddedserver.jetty.EmbeddedJettyServer:149] ignite - == Spark has ignited ...
+2017-01-19 @ 14:13:33 CST INFO  [spark.embeddedserver.jetty.EmbeddedJettyServer:150] ignite - >> Listening on 0.0.0.0:8010
+2017-01-19 @ 14:13:33 CST INFO  [org.eclipse.jetty.server.Server:372] doStart - jetty-9.4.0.v20161208
+2017-01-19 @ 14:13:33 CST INFO  [org.eclipse.jetty.server.session.DefaultSessionIdManager:354] doStart - DefaultSessionIdManager workerName=node0
+2017-01-19 @ 14:13:33 CST INFO  [org.eclipse.jetty.server.session.DefaultSessionIdManager:359] doStart - No SessionScavenger set, using defaults
+2017-01-19 @ 14:13:33 CST INFO  [org.eclipse.jetty.server.session.HouseKeeper:146] startScavenging - Scavenging every 600000ms
+2017-01-19 @ 14:13:33 CST INFO  [org.eclipse.jetty.server.AbstractConnector:280] doStart - Started ServerConnector@670cfaf1{HTTP/1.1,[http/1.1]}{0.0.0.0:8010}
+2017-01-19 @ 14:13:33 CST INFO  [org.eclipse.jetty.server.Server:444] doStart - Started @1602ms
+2017-01-19 @ 14:18:47 CST INFO  [spark.staticfiles.StaticFilesConfiguration:164] configureExternal - External StaticResourceHandler configured with folder = www
+2017-01-19 @ 14:18:47 CST WARN  [spark.staticfiles.StaticFilesFolder:27] externalConfiguredTo - Registering external static files folder [www] as [D:/git/health-backend/health-backend/www].
+2017-01-19 @ 14:18:47 CST INFO  [org.reflections.Reflections:229] scan - Reflections took 77 ms to scan 1 urls, producing 3 keys and 12 values 
+2017-01-19 @ 14:18:47 CST INFO  [org.tfelab.health.ServiceWrapper:43] <init> - Add DoctorRoute.
+2017-01-19 @ 14:18:47 CST INFO  [org.tfelab.health.ServiceWrapper:43] <init> - Add QueryRoute.
+2017-01-19 @ 14:18:47 CST INFO  [org.tfelab.health.ServiceWrapper:43] <init> - Add CommonRoute.
+2017-01-19 @ 14:18:47 CST INFO  [org.tfelab.health.ServiceWrapper:43] <init> - Add SectionRoute.
+2017-01-19 @ 14:18:47 CST INFO  [org.tfelab.health.ServiceWrapper:43] <init> - Add UserRoute.
+2017-01-19 @ 14:18:47 CST INFO  [org.tfelab.health.ServiceWrapper:43] <init> - Add CommentRoute.
+2017-01-19 @ 14:18:47 CST INFO  [org.eclipse.jetty.util.log.Log:192] initialized - Logging initialized @1324ms to org.eclipse.jetty.util.log.Slf4jLog
+2017-01-19 @ 14:18:47 CST INFO  [spark.embeddedserver.jetty.EmbeddedJettyServer:149] ignite - == Spark has ignited ...
+2017-01-19 @ 14:18:47 CST INFO  [spark.embeddedserver.jetty.EmbeddedJettyServer:150] ignite - >> Listening on 0.0.0.0:8010
+2017-01-19 @ 14:18:47 CST INFO  [org.eclipse.jetty.server.Server:372] doStart - jetty-9.4.0.v20161208
+2017-01-19 @ 14:18:47 CST INFO  [org.eclipse.jetty.server.session.DefaultSessionIdManager:354] doStart - DefaultSessionIdManager workerName=node0
+2017-01-19 @ 14:18:47 CST INFO  [org.eclipse.jetty.server.session.DefaultSessionIdManager:359] doStart - No SessionScavenger set, using defaults
+2017-01-19 @ 14:18:47 CST INFO  [org.eclipse.jetty.server.session.HouseKeeper:146] startScavenging - Scavenging every 660000ms
+2017-01-19 @ 14:18:47 CST INFO  [org.eclipse.jetty.server.AbstractConnector:280] doStart - Started ServerConnector@3925def5{HTTP/1.1,[http/1.1]}{0.0.0.0:8010}
+2017-01-19 @ 14:18:47 CST INFO  [org.eclipse.jetty.server.Server:444] doStart - Started @1453ms
+2017-01-19 @ 14:19:02 CST INFO  [spark.http.matching.MatcherFilter:160] doFilter - The requested route [/lib/backbone/backbone-min.map] has not been mapped in Spark for Accept: [null]
+2017-01-19 @ 14:19:02 CST INFO  [spark.http.matching.MatcherFilter:160] doFilter - The requested route [/lib/underscore/underscore-min.map] has not been mapped in Spark for Accept: [null]
+2017-01-19 @ 14:19:15 CST INFO  [com.mchange.v2.log.slf4j.Slf4jMLog$Slf4jMLogger$InfoLogger:203] log - MLog clients using slf4j logging.
+2017-01-19 @ 14:19:15 CST INFO  [com.mchange.v2.log.slf4j.Slf4jMLog$Slf4jMLogger$InfoLogger:203] log - Initializing c3p0-0.9.5.1 [built 16-June-2015 00:06:36 -0700; debug? true; trace: 10]
+2017-01-19 @ 14:19:15 CST INFO  [com.mchange.v2.log.slf4j.Slf4jMLog$Slf4jMLogger$InfoLogger:203] log - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 0, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, contextClassLoaderSource -> caller, dataSourceName -> 2rvxx19l1ebqva4prjv4c|4834dd47, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, extensions -> {}, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, forceSynchronousCheckins -> false, forceUseNamedDriverClass -> false, identityToken -> 2rvxx19l1ebqva4prjv4c|4834dd47, idleConnectionTestPeriod -> 120, initialPoolSize -> 5, jdbcUrl -> jdbc:mysql://127.0.0.1:3306/health, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 3600, maxIdleTime -> 120, maxIdleTimeExcessConnections -> 120, maxPoolSize -> 20, maxStatements -> 100, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, preferredTestQuery -> null, privilegeSpawnedThreads -> false, properties -> {user=******, password=******}, propertyCycle -> 0, statementCacheNumDeferredCloseThreads -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, userOverrides -> {}, usesTraditionalReflectiveProxies -> false ]
+2017-01-20 @ 14:44:35 CST INFO  [spark.staticfiles.StaticFilesConfiguration:164] configureExternal - External StaticResourceHandler configured with folder = www
+2017-01-20 @ 14:44:35 CST WARN  [spark.staticfiles.StaticFilesFolder:27] externalConfiguredTo - Registering external static files folder [www] as [D:/git/health-backend/health-backend/www].
+2017-01-20 @ 14:44:35 CST INFO  [org.reflections.Reflections:229] scan - Reflections took 127 ms to scan 1 urls, producing 3 keys and 12 values 
+2017-01-20 @ 14:44:36 CST INFO  [org.tfelab.health.ServiceWrapper:46] <init> - Add DoctorRoute.
+2017-01-20 @ 14:44:36 CST INFO  [org.tfelab.health.ServiceWrapper:46] <init> - Add QueryRoute.
+2017-01-20 @ 14:44:36 CST INFO  [org.tfelab.health.ServiceWrapper:46] <init> - Add CommonRoute.
+2017-01-20 @ 14:44:36 CST INFO  [org.tfelab.health.ServiceWrapper:46] <init> - Add SectionRoute.
+2017-01-20 @ 14:44:36 CST INFO  [org.tfelab.health.ServiceWrapper:46] <init> - Add UserRoute.
+2017-01-20 @ 14:44:36 CST INFO  [org.tfelab.health.ServiceWrapper:46] <init> - Add CommentRoute.
+2017-01-20 @ 14:44:36 CST INFO  [org.eclipse.jetty.util.log.Log:192] initialized - Logging initialized @2156ms to org.eclipse.jetty.util.log.Slf4jLog
+2017-01-20 @ 14:48:19 CST INFO  [spark.staticfiles.StaticFilesConfiguration:164] configureExternal - External StaticResourceHandler configured with folder = www
+2017-01-20 @ 14:48:19 CST WARN  [spark.staticfiles.StaticFilesFolder:27] externalConfiguredTo - Registering external static files folder [www] as [D:/git/health-backend/health-backend/www].
+2017-01-20 @ 14:48:19 CST INFO  [org.reflections.Reflections:229] scan - Reflections took 89 ms to scan 1 urls, producing 3 keys and 12 values 
+2017-01-20 @ 14:48:19 CST INFO  [org.tfelab.health.ServiceWrapper:46] <init> - Add DoctorRoute.
+2017-01-20 @ 14:48:19 CST INFO  [org.tfelab.health.ServiceWrapper:46] <init> - Add QueryRoute.
+2017-01-20 @ 14:48:19 CST INFO  [org.tfelab.health.ServiceWrapper:46] <init> - Add CommonRoute.
+2017-01-20 @ 14:48:19 CST INFO  [org.tfelab.health.ServiceWrapper:46] <init> - Add SectionRoute.
+2017-01-20 @ 14:48:19 CST INFO  [org.tfelab.health.ServiceWrapper:46] <init> - Add UserRoute.
+2017-01-20 @ 14:48:19 CST INFO  [org.tfelab.health.ServiceWrapper:46] <init> - Add CommentRoute.
+2017-01-20 @ 14:48:19 CST INFO  [org.eclipse.jetty.util.log.Log:192] initialized - Logging initialized @1575ms to org.eclipse.jetty.util.log.Slf4jLog
+2017-01-20 @ 14:48:19 CST INFO  [spark.embeddedserver.jetty.EmbeddedJettyServer:149] ignite - == Spark has ignited ...
+2017-01-20 @ 14:48:19 CST INFO  [spark.embeddedserver.jetty.EmbeddedJettyServer:150] ignite - >> Listening on 0.0.0.0:8010
+2017-01-20 @ 14:48:19 CST INFO  [org.eclipse.jetty.server.Server:372] doStart - jetty-9.4.0.v20161208
+2017-01-20 @ 14:48:19 CST INFO  [org.eclipse.jetty.server.session.DefaultSessionIdManager:354] doStart - DefaultSessionIdManager workerName=node0
+2017-01-20 @ 14:48:19 CST INFO  [org.eclipse.jetty.server.session.DefaultSessionIdManager:359] doStart - No SessionScavenger set, using defaults
+2017-01-20 @ 14:48:19 CST INFO  [org.eclipse.jetty.server.session.HouseKeeper:146] startScavenging - Scavenging every 600000ms
+2017-01-20 @ 14:48:19 CST INFO  [org.eclipse.jetty.server.AbstractConnector:280] doStart - Started ServerConnector@7e4bad40{HTTP/1.1,[http/1.1]}{0.0.0.0:8010}
+2017-01-20 @ 14:48:19 CST INFO  [org.eclipse.jetty.server.Server:444] doStart - Started @1730ms
