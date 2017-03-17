@@ -2297,3 +2297,556 @@ Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationExce
 	at org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:590) [jetty-util-9.4.0.M1.jar:9.4.0.M1]
 	at java.lang.Thread.run(Unknown Source) [?:1.8.0_71]
 
+2016-09-12 @ 15:28:57 CST ERROR [org.tfelab.health.route.UserRoute:132] lambda$3 - Error login user. java.sql.SQLException: Connections could not be acquired from the underlying database!
+	at com.mchange.v2.sql.SqlUtils.toSQLException(SqlUtils.java:118) ~[mchange-commons-java-0.2.10.jar:0.2.10]
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool.checkoutPooledConnection(C3P0PooledConnectionPool.java:692) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.c3p0.impl.AbstractPoolBackedDataSource.getConnection(AbstractPoolBackedDataSource.java:140) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.j256.ormlite.jdbc.DataSourceConnectionSource.getReadWriteConnection(DataSourceConnectionSource.java:120) ~[ormlite-jdbc-4.48.jar:?]
+	at com.j256.ormlite.jdbc.DataSourceConnectionSource.getReadOnlyConnection(DataSourceConnectionSource.java:102) ~[ormlite-jdbc-4.48.jar:?]
+	at com.j256.ormlite.stmt.StatementExecutor.buildIterator(StatementExecutor.java:243) ~[ormlite-core-4.48.jar:?]
+	at com.j256.ormlite.stmt.StatementExecutor.query(StatementExecutor.java:196) ~[ormlite-core-4.48.jar:?]
+	at com.j256.ormlite.dao.BaseDaoImpl.query(BaseDaoImpl.java:265) ~[ormlite-core-4.48.jar:?]
+	at com.j256.ormlite.stmt.QueryBuilder.query(QueryBuilder.java:361) ~[ormlite-core-4.48.jar:?]
+	at com.j256.ormlite.stmt.Where.query(Where.java:503) ~[ormlite-core-4.48.jar:?]
+	at com.j256.ormlite.dao.BaseDaoImpl.queryForEq(BaseDaoImpl.java:245) ~[ormlite-core-4.48.jar:?]
+	at org.tfelab.health.model.User.getUserByName(User.java:131) ~[bin/:?]
+	at org.tfelab.health.route.UserRoute.lambda$3(UserRoute.java:123) ~[bin/:?]
+	at spark.ResponseTransformerRouteImpl$1.handle(ResponseTransformerRouteImpl.java:47) [spark-core-2.3.jar:?]
+	at spark.webserver.MatcherFilter.doFilter(MatcherFilter.java:162) [spark-core-2.3.jar:?]
+	at spark.webserver.JettyHandler.doHandle(JettyHandler.java:61) [spark-core-2.3.jar:?]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1556) [jetty-server-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141) [jetty-server-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.server.handler.HandlerList.handle(HandlerList.java:52) [jetty-server-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132) [jetty-server-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.server.Server.handle(Server.java:549) [jetty-server-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:320) [jetty-server-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:254) [jetty-server-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:269) [jetty-io-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:97) [jetty-io-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.java:124) [jetty-io-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.util.thread.Invocable.invokePreferred(Invocable.java:90) [jetty-util-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.util.thread.strategy.ExecutingExecutionStrategy.invoke(ExecutingExecutionStrategy.java:58) [jetty-util-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.produceConsume(ExecuteProduceConsume.java:201) [jetty-util-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.run(ExecuteProduceConsume.java:133) [jetty-util-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:672) [jetty-util-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:590) [jetty-util-9.4.0.M1.jar:9.4.0.M1]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_74]
+Caused by: com.mchange.v2.resourcepool.CannotAcquireResourceException: A ResourcePool could not acquire a resource from its primary factory or source.
+	at com.mchange.v2.resourcepool.BasicResourcePool.awaitAvailable(BasicResourcePool.java:1469) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.resourcepool.BasicResourcePool.prelimCheckoutResource(BasicResourcePool.java:644) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.resourcepool.BasicResourcePool.checkoutResource(BasicResourcePool.java:554) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool.checkoutAndMarkConnectionInUse(C3P0PooledConnectionPool.java:758) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool.checkoutPooledConnection(C3P0PooledConnectionPool.java:685) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	... 31 more
+
+2016-09-12 @ 15:29:06 CST ERROR [org.tfelab.health.route.UserRoute:132] lambda$3 - Error login user. java.sql.SQLException: Connections could not be acquired from the underlying database!
+	at com.mchange.v2.sql.SqlUtils.toSQLException(SqlUtils.java:118) ~[mchange-commons-java-0.2.10.jar:0.2.10]
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool.checkoutPooledConnection(C3P0PooledConnectionPool.java:692) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.c3p0.impl.AbstractPoolBackedDataSource.getConnection(AbstractPoolBackedDataSource.java:140) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.j256.ormlite.jdbc.DataSourceConnectionSource.getReadWriteConnection(DataSourceConnectionSource.java:120) ~[ormlite-jdbc-4.48.jar:?]
+	at com.j256.ormlite.jdbc.DataSourceConnectionSource.getReadOnlyConnection(DataSourceConnectionSource.java:102) ~[ormlite-jdbc-4.48.jar:?]
+	at com.j256.ormlite.stmt.StatementExecutor.buildIterator(StatementExecutor.java:243) ~[ormlite-core-4.48.jar:?]
+	at com.j256.ormlite.stmt.StatementExecutor.query(StatementExecutor.java:196) ~[ormlite-core-4.48.jar:?]
+	at com.j256.ormlite.dao.BaseDaoImpl.query(BaseDaoImpl.java:265) ~[ormlite-core-4.48.jar:?]
+	at com.j256.ormlite.stmt.QueryBuilder.query(QueryBuilder.java:361) ~[ormlite-core-4.48.jar:?]
+	at com.j256.ormlite.stmt.Where.query(Where.java:503) ~[ormlite-core-4.48.jar:?]
+	at com.j256.ormlite.dao.BaseDaoImpl.queryForEq(BaseDaoImpl.java:245) ~[ormlite-core-4.48.jar:?]
+	at org.tfelab.health.model.User.getUserByName(User.java:131) ~[bin/:?]
+	at org.tfelab.health.route.UserRoute.lambda$3(UserRoute.java:123) ~[bin/:?]
+	at spark.ResponseTransformerRouteImpl$1.handle(ResponseTransformerRouteImpl.java:47) [spark-core-2.3.jar:?]
+	at spark.webserver.MatcherFilter.doFilter(MatcherFilter.java:162) [spark-core-2.3.jar:?]
+	at spark.webserver.JettyHandler.doHandle(JettyHandler.java:61) [spark-core-2.3.jar:?]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1556) [jetty-server-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141) [jetty-server-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.server.handler.HandlerList.handle(HandlerList.java:52) [jetty-server-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132) [jetty-server-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.server.Server.handle(Server.java:549) [jetty-server-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:320) [jetty-server-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:254) [jetty-server-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:269) [jetty-io-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:97) [jetty-io-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.java:124) [jetty-io-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.util.thread.Invocable.invokePreferred(Invocable.java:90) [jetty-util-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.util.thread.strategy.ExecutingExecutionStrategy.invoke(ExecutingExecutionStrategy.java:58) [jetty-util-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.produceConsume(ExecuteProduceConsume.java:201) [jetty-util-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.run(ExecuteProduceConsume.java:133) [jetty-util-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:672) [jetty-util-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:590) [jetty-util-9.4.0.M1.jar:9.4.0.M1]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_74]
+Caused by: com.mchange.v2.resourcepool.CannotAcquireResourceException: A ResourcePool could not acquire a resource from its primary factory or source.
+	at com.mchange.v2.resourcepool.BasicResourcePool.awaitAvailable(BasicResourcePool.java:1469) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.resourcepool.BasicResourcePool.prelimCheckoutResource(BasicResourcePool.java:644) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.resourcepool.BasicResourcePool.checkoutResource(BasicResourcePool.java:554) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool.checkoutAndMarkConnectionInUse(C3P0PooledConnectionPool.java:758) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool.checkoutPooledConnection(C3P0PooledConnectionPool.java:685) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	... 31 more
+
+2016-09-12 @ 15:29:20 CST ERROR [org.tfelab.health.route.UserRoute:132] lambda$3 - Error login user. java.sql.SQLException: Connections could not be acquired from the underlying database!
+	at com.mchange.v2.sql.SqlUtils.toSQLException(SqlUtils.java:118) ~[mchange-commons-java-0.2.10.jar:0.2.10]
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool.checkoutPooledConnection(C3P0PooledConnectionPool.java:692) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.c3p0.impl.AbstractPoolBackedDataSource.getConnection(AbstractPoolBackedDataSource.java:140) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.j256.ormlite.jdbc.DataSourceConnectionSource.getReadWriteConnection(DataSourceConnectionSource.java:120) ~[ormlite-jdbc-4.48.jar:?]
+	at com.j256.ormlite.jdbc.DataSourceConnectionSource.getReadOnlyConnection(DataSourceConnectionSource.java:102) ~[ormlite-jdbc-4.48.jar:?]
+	at com.j256.ormlite.stmt.StatementExecutor.buildIterator(StatementExecutor.java:243) ~[ormlite-core-4.48.jar:?]
+	at com.j256.ormlite.stmt.StatementExecutor.query(StatementExecutor.java:196) ~[ormlite-core-4.48.jar:?]
+	at com.j256.ormlite.dao.BaseDaoImpl.query(BaseDaoImpl.java:265) ~[ormlite-core-4.48.jar:?]
+	at com.j256.ormlite.stmt.QueryBuilder.query(QueryBuilder.java:361) ~[ormlite-core-4.48.jar:?]
+	at com.j256.ormlite.stmt.Where.query(Where.java:503) ~[ormlite-core-4.48.jar:?]
+	at com.j256.ormlite.dao.BaseDaoImpl.queryForEq(BaseDaoImpl.java:245) ~[ormlite-core-4.48.jar:?]
+	at org.tfelab.health.model.User.getUserByName(User.java:131) ~[bin/:?]
+	at org.tfelab.health.route.UserRoute.lambda$3(UserRoute.java:123) ~[bin/:?]
+	at spark.ResponseTransformerRouteImpl$1.handle(ResponseTransformerRouteImpl.java:47) [spark-core-2.3.jar:?]
+	at spark.webserver.MatcherFilter.doFilter(MatcherFilter.java:162) [spark-core-2.3.jar:?]
+	at spark.webserver.JettyHandler.doHandle(JettyHandler.java:61) [spark-core-2.3.jar:?]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1556) [jetty-server-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141) [jetty-server-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.server.handler.HandlerList.handle(HandlerList.java:52) [jetty-server-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132) [jetty-server-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.server.Server.handle(Server.java:549) [jetty-server-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:320) [jetty-server-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:254) [jetty-server-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:269) [jetty-io-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:97) [jetty-io-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.java:124) [jetty-io-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.util.thread.Invocable.invokePreferred(Invocable.java:90) [jetty-util-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.util.thread.strategy.ExecutingExecutionStrategy.invoke(ExecutingExecutionStrategy.java:58) [jetty-util-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.produceConsume(ExecuteProduceConsume.java:201) [jetty-util-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.run(ExecuteProduceConsume.java:133) [jetty-util-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:672) [jetty-util-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:590) [jetty-util-9.4.0.M1.jar:9.4.0.M1]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_74]
+Caused by: com.mchange.v2.resourcepool.CannotAcquireResourceException: A ResourcePool could not acquire a resource from its primary factory or source.
+	at com.mchange.v2.resourcepool.BasicResourcePool.awaitAvailable(BasicResourcePool.java:1469) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.resourcepool.BasicResourcePool.prelimCheckoutResource(BasicResourcePool.java:644) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.resourcepool.BasicResourcePool.checkoutResource(BasicResourcePool.java:554) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool.checkoutAndMarkConnectionInUse(C3P0PooledConnectionPool.java:758) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool.checkoutPooledConnection(C3P0PooledConnectionPool.java:685) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	... 31 more
+
+2016-09-12 @ 15:29:33 CST ERROR [org.tfelab.health.route.UserRoute:132] lambda$3 - Error login user. java.sql.SQLException: Connections could not be acquired from the underlying database!
+	at com.mchange.v2.sql.SqlUtils.toSQLException(SqlUtils.java:118) ~[mchange-commons-java-0.2.10.jar:0.2.10]
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool.checkoutPooledConnection(C3P0PooledConnectionPool.java:692) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.c3p0.impl.AbstractPoolBackedDataSource.getConnection(AbstractPoolBackedDataSource.java:140) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.j256.ormlite.jdbc.DataSourceConnectionSource.getReadWriteConnection(DataSourceConnectionSource.java:120) ~[ormlite-jdbc-4.48.jar:?]
+	at com.j256.ormlite.jdbc.DataSourceConnectionSource.getReadOnlyConnection(DataSourceConnectionSource.java:102) ~[ormlite-jdbc-4.48.jar:?]
+	at com.j256.ormlite.stmt.StatementExecutor.buildIterator(StatementExecutor.java:243) ~[ormlite-core-4.48.jar:?]
+	at com.j256.ormlite.stmt.StatementExecutor.query(StatementExecutor.java:196) ~[ormlite-core-4.48.jar:?]
+	at com.j256.ormlite.dao.BaseDaoImpl.query(BaseDaoImpl.java:265) ~[ormlite-core-4.48.jar:?]
+	at com.j256.ormlite.stmt.QueryBuilder.query(QueryBuilder.java:361) ~[ormlite-core-4.48.jar:?]
+	at com.j256.ormlite.stmt.Where.query(Where.java:503) ~[ormlite-core-4.48.jar:?]
+	at com.j256.ormlite.dao.BaseDaoImpl.queryForEq(BaseDaoImpl.java:245) ~[ormlite-core-4.48.jar:?]
+	at org.tfelab.health.model.User.getUserByName(User.java:131) ~[bin/:?]
+	at org.tfelab.health.route.UserRoute.lambda$3(UserRoute.java:123) ~[bin/:?]
+	at spark.ResponseTransformerRouteImpl$1.handle(ResponseTransformerRouteImpl.java:47) [spark-core-2.3.jar:?]
+	at spark.webserver.MatcherFilter.doFilter(MatcherFilter.java:162) [spark-core-2.3.jar:?]
+	at spark.webserver.JettyHandler.doHandle(JettyHandler.java:61) [spark-core-2.3.jar:?]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1556) [jetty-server-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141) [jetty-server-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.server.handler.HandlerList.handle(HandlerList.java:52) [jetty-server-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132) [jetty-server-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.server.Server.handle(Server.java:549) [jetty-server-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:320) [jetty-server-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:254) [jetty-server-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:269) [jetty-io-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:97) [jetty-io-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.java:124) [jetty-io-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:672) [jetty-util-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:590) [jetty-util-9.4.0.M1.jar:9.4.0.M1]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_74]
+Caused by: com.mchange.v2.resourcepool.CannotAcquireResourceException: A ResourcePool could not acquire a resource from its primary factory or source.
+	at com.mchange.v2.resourcepool.BasicResourcePool.awaitAvailable(BasicResourcePool.java:1469) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.resourcepool.BasicResourcePool.prelimCheckoutResource(BasicResourcePool.java:644) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.resourcepool.BasicResourcePool.checkoutResource(BasicResourcePool.java:554) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool.checkoutAndMarkConnectionInUse(C3P0PooledConnectionPool.java:758) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool.checkoutPooledConnection(C3P0PooledConnectionPool.java:685) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	... 27 more
+
+2016-09-12 @ 15:29:49 CST ERROR [org.tfelab.health.route.UserRoute:48] lambda$0 - Error create user. java.sql.SQLException: Connections could not be acquired from the underlying database!
+	at com.mchange.v2.sql.SqlUtils.toSQLException(SqlUtils.java:118) ~[mchange-commons-java-0.2.10.jar:0.2.10]
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool.checkoutPooledConnection(C3P0PooledConnectionPool.java:692) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.c3p0.impl.AbstractPoolBackedDataSource.getConnection(AbstractPoolBackedDataSource.java:140) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.j256.ormlite.jdbc.DataSourceConnectionSource.getReadWriteConnection(DataSourceConnectionSource.java:120) ~[ormlite-jdbc-4.48.jar:?]
+	at com.j256.ormlite.dao.BaseDaoImpl.create(BaseDaoImpl.java:308) ~[ormlite-core-4.48.jar:?]
+	at org.tfelab.health.model.User.insert(User.java:66) ~[bin/:?]
+	at org.tfelab.health.route.UserRoute.lambda$0(UserRoute.java:41) ~[bin/:?]
+	at spark.ResponseTransformerRouteImpl$1.handle(ResponseTransformerRouteImpl.java:47) [spark-core-2.3.jar:?]
+	at spark.webserver.MatcherFilter.doFilter(MatcherFilter.java:162) [spark-core-2.3.jar:?]
+	at spark.webserver.JettyHandler.doHandle(JettyHandler.java:61) [spark-core-2.3.jar:?]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1556) [jetty-server-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141) [jetty-server-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.server.handler.HandlerList.handle(HandlerList.java:52) [jetty-server-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132) [jetty-server-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.server.Server.handle(Server.java:549) [jetty-server-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:320) [jetty-server-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:254) [jetty-server-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:269) [jetty-io-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:97) [jetty-io-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.java:124) [jetty-io-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.util.thread.Invocable.invokePreferred(Invocable.java:90) [jetty-util-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.util.thread.strategy.ExecutingExecutionStrategy.invoke(ExecutingExecutionStrategy.java:58) [jetty-util-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.produceConsume(ExecuteProduceConsume.java:201) [jetty-util-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.run(ExecuteProduceConsume.java:133) [jetty-util-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:672) [jetty-util-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:590) [jetty-util-9.4.0.M1.jar:9.4.0.M1]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_74]
+Caused by: com.mchange.v2.resourcepool.CannotAcquireResourceException: A ResourcePool could not acquire a resource from its primary factory or source.
+	at com.mchange.v2.resourcepool.BasicResourcePool.awaitAvailable(BasicResourcePool.java:1469) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.resourcepool.BasicResourcePool.prelimCheckoutResource(BasicResourcePool.java:644) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.resourcepool.BasicResourcePool.checkoutResource(BasicResourcePool.java:554) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool.checkoutAndMarkConnectionInUse(C3P0PooledConnectionPool.java:758) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool.checkoutPooledConnection(C3P0PooledConnectionPool.java:685) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	... 25 more
+
+2016-09-12 @ 15:30:44 CST ERROR [org.tfelab.health.route.UserRoute:132] lambda$3 - Error login user. java.sql.SQLException: Connections could not be acquired from the underlying database!
+	at com.mchange.v2.sql.SqlUtils.toSQLException(SqlUtils.java:118) ~[mchange-commons-java-0.2.10.jar:0.2.10]
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool.checkoutPooledConnection(C3P0PooledConnectionPool.java:692) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.c3p0.impl.AbstractPoolBackedDataSource.getConnection(AbstractPoolBackedDataSource.java:140) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.j256.ormlite.jdbc.DataSourceConnectionSource.getReadWriteConnection(DataSourceConnectionSource.java:120) ~[ormlite-jdbc-4.48.jar:?]
+	at com.j256.ormlite.jdbc.DataSourceConnectionSource.getReadOnlyConnection(DataSourceConnectionSource.java:102) ~[ormlite-jdbc-4.48.jar:?]
+	at com.j256.ormlite.stmt.StatementExecutor.buildIterator(StatementExecutor.java:243) ~[ormlite-core-4.48.jar:?]
+	at com.j256.ormlite.stmt.StatementExecutor.query(StatementExecutor.java:196) ~[ormlite-core-4.48.jar:?]
+	at com.j256.ormlite.dao.BaseDaoImpl.query(BaseDaoImpl.java:265) ~[ormlite-core-4.48.jar:?]
+	at com.j256.ormlite.stmt.QueryBuilder.query(QueryBuilder.java:361) ~[ormlite-core-4.48.jar:?]
+	at com.j256.ormlite.stmt.Where.query(Where.java:503) ~[ormlite-core-4.48.jar:?]
+	at com.j256.ormlite.dao.BaseDaoImpl.queryForEq(BaseDaoImpl.java:245) ~[ormlite-core-4.48.jar:?]
+	at org.tfelab.health.model.User.getUserByName(User.java:131) ~[bin/:?]
+	at org.tfelab.health.route.UserRoute.lambda$3(UserRoute.java:123) ~[bin/:?]
+	at spark.ResponseTransformerRouteImpl$1.handle(ResponseTransformerRouteImpl.java:47) [spark-core-2.3.jar:?]
+	at spark.webserver.MatcherFilter.doFilter(MatcherFilter.java:162) [spark-core-2.3.jar:?]
+	at spark.webserver.JettyHandler.doHandle(JettyHandler.java:61) [spark-core-2.3.jar:?]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1556) [jetty-server-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141) [jetty-server-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.server.handler.HandlerList.handle(HandlerList.java:52) [jetty-server-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132) [jetty-server-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.server.Server.handle(Server.java:549) [jetty-server-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:320) [jetty-server-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:254) [jetty-server-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:269) [jetty-io-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:97) [jetty-io-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.java:124) [jetty-io-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.util.thread.Invocable.invokePreferred(Invocable.java:90) [jetty-util-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.util.thread.strategy.ExecutingExecutionStrategy.invoke(ExecutingExecutionStrategy.java:58) [jetty-util-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.produceConsume(ExecuteProduceConsume.java:201) [jetty-util-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.run(ExecuteProduceConsume.java:133) [jetty-util-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:672) [jetty-util-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:590) [jetty-util-9.4.0.M1.jar:9.4.0.M1]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_74]
+Caused by: com.mchange.v2.resourcepool.CannotAcquireResourceException: A ResourcePool could not acquire a resource from its primary factory or source.
+	at com.mchange.v2.resourcepool.BasicResourcePool.awaitAvailable(BasicResourcePool.java:1469) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.resourcepool.BasicResourcePool.prelimCheckoutResource(BasicResourcePool.java:644) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.resourcepool.BasicResourcePool.checkoutResource(BasicResourcePool.java:554) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool.checkoutAndMarkConnectionInUse(C3P0PooledConnectionPool.java:758) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool.checkoutPooledConnection(C3P0PooledConnectionPool.java:685) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	... 31 more
+
+2016-09-12 @ 15:31:03 CST ERROR [org.tfelab.health.route.UserRoute:132] lambda$3 - Error login user. java.sql.SQLException: Connections could not be acquired from the underlying database!
+	at com.mchange.v2.sql.SqlUtils.toSQLException(SqlUtils.java:118) ~[mchange-commons-java-0.2.10.jar:0.2.10]
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool.checkoutPooledConnection(C3P0PooledConnectionPool.java:692) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.c3p0.impl.AbstractPoolBackedDataSource.getConnection(AbstractPoolBackedDataSource.java:140) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.j256.ormlite.jdbc.DataSourceConnectionSource.getReadWriteConnection(DataSourceConnectionSource.java:120) ~[ormlite-jdbc-4.48.jar:?]
+	at com.j256.ormlite.jdbc.DataSourceConnectionSource.getReadOnlyConnection(DataSourceConnectionSource.java:102) ~[ormlite-jdbc-4.48.jar:?]
+	at com.j256.ormlite.stmt.StatementExecutor.buildIterator(StatementExecutor.java:243) ~[ormlite-core-4.48.jar:?]
+	at com.j256.ormlite.stmt.StatementExecutor.query(StatementExecutor.java:196) ~[ormlite-core-4.48.jar:?]
+	at com.j256.ormlite.dao.BaseDaoImpl.query(BaseDaoImpl.java:265) ~[ormlite-core-4.48.jar:?]
+	at com.j256.ormlite.stmt.QueryBuilder.query(QueryBuilder.java:361) ~[ormlite-core-4.48.jar:?]
+	at com.j256.ormlite.stmt.Where.query(Where.java:503) ~[ormlite-core-4.48.jar:?]
+	at com.j256.ormlite.dao.BaseDaoImpl.queryForEq(BaseDaoImpl.java:245) ~[ormlite-core-4.48.jar:?]
+	at org.tfelab.health.model.User.getUserByName(User.java:131) ~[bin/:?]
+	at org.tfelab.health.route.UserRoute.lambda$3(UserRoute.java:123) ~[bin/:?]
+	at spark.ResponseTransformerRouteImpl$1.handle(ResponseTransformerRouteImpl.java:47) [spark-core-2.3.jar:?]
+	at spark.webserver.MatcherFilter.doFilter(MatcherFilter.java:162) [spark-core-2.3.jar:?]
+	at spark.webserver.JettyHandler.doHandle(JettyHandler.java:61) [spark-core-2.3.jar:?]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1556) [jetty-server-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141) [jetty-server-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.server.handler.HandlerList.handle(HandlerList.java:52) [jetty-server-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132) [jetty-server-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.server.Server.handle(Server.java:549) [jetty-server-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:320) [jetty-server-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:254) [jetty-server-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:269) [jetty-io-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:97) [jetty-io-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.java:124) [jetty-io-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.util.thread.Invocable.invokePreferred(Invocable.java:90) [jetty-util-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.util.thread.strategy.ExecutingExecutionStrategy.invoke(ExecutingExecutionStrategy.java:58) [jetty-util-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.produceConsume(ExecuteProduceConsume.java:201) [jetty-util-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.run(ExecuteProduceConsume.java:133) [jetty-util-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:672) [jetty-util-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:590) [jetty-util-9.4.0.M1.jar:9.4.0.M1]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_74]
+Caused by: com.mchange.v2.resourcepool.CannotAcquireResourceException: A ResourcePool could not acquire a resource from its primary factory or source.
+	at com.mchange.v2.resourcepool.BasicResourcePool.awaitAvailable(BasicResourcePool.java:1469) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.resourcepool.BasicResourcePool.prelimCheckoutResource(BasicResourcePool.java:644) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.resourcepool.BasicResourcePool.checkoutResource(BasicResourcePool.java:554) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool.checkoutAndMarkConnectionInUse(C3P0PooledConnectionPool.java:758) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool.checkoutPooledConnection(C3P0PooledConnectionPool.java:685) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	... 31 more
+
+2016-09-12 @ 15:31:14 CST ERROR [org.tfelab.health.route.UserRoute:48] lambda$0 - Error create user. java.sql.SQLException: Connections could not be acquired from the underlying database!
+	at com.mchange.v2.sql.SqlUtils.toSQLException(SqlUtils.java:118) ~[mchange-commons-java-0.2.10.jar:0.2.10]
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool.checkoutPooledConnection(C3P0PooledConnectionPool.java:692) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.c3p0.impl.AbstractPoolBackedDataSource.getConnection(AbstractPoolBackedDataSource.java:140) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.j256.ormlite.jdbc.DataSourceConnectionSource.getReadWriteConnection(DataSourceConnectionSource.java:120) ~[ormlite-jdbc-4.48.jar:?]
+	at com.j256.ormlite.dao.BaseDaoImpl.create(BaseDaoImpl.java:308) ~[ormlite-core-4.48.jar:?]
+	at org.tfelab.health.model.User.insert(User.java:66) ~[bin/:?]
+	at org.tfelab.health.route.UserRoute.lambda$0(UserRoute.java:41) ~[bin/:?]
+	at spark.ResponseTransformerRouteImpl$1.handle(ResponseTransformerRouteImpl.java:47) [spark-core-2.3.jar:?]
+	at spark.webserver.MatcherFilter.doFilter(MatcherFilter.java:162) [spark-core-2.3.jar:?]
+	at spark.webserver.JettyHandler.doHandle(JettyHandler.java:61) [spark-core-2.3.jar:?]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1556) [jetty-server-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141) [jetty-server-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.server.handler.HandlerList.handle(HandlerList.java:52) [jetty-server-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132) [jetty-server-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.server.Server.handle(Server.java:549) [jetty-server-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:320) [jetty-server-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:254) [jetty-server-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:269) [jetty-io-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:97) [jetty-io-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.java:124) [jetty-io-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.util.thread.Invocable.invokePreferred(Invocable.java:90) [jetty-util-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.util.thread.strategy.ExecutingExecutionStrategy.invoke(ExecutingExecutionStrategy.java:58) [jetty-util-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.produceConsume(ExecuteProduceConsume.java:201) [jetty-util-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.run(ExecuteProduceConsume.java:133) [jetty-util-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:672) [jetty-util-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:590) [jetty-util-9.4.0.M1.jar:9.4.0.M1]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_74]
+Caused by: com.mchange.v2.resourcepool.CannotAcquireResourceException: A ResourcePool could not acquire a resource from its primary factory or source.
+	at com.mchange.v2.resourcepool.BasicResourcePool.awaitAvailable(BasicResourcePool.java:1469) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.resourcepool.BasicResourcePool.prelimCheckoutResource(BasicResourcePool.java:644) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.resourcepool.BasicResourcePool.checkoutResource(BasicResourcePool.java:554) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool.checkoutAndMarkConnectionInUse(C3P0PooledConnectionPool.java:758) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool.checkoutPooledConnection(C3P0PooledConnectionPool.java:685) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	... 25 more
+
+2016-09-12 @ 21:19:55 CST ERROR [org.tfelab.health.route.UserRoute:132] lambda$3 - Error login user. java.sql.SQLException: Connections could not be acquired from the underlying database!
+	at com.mchange.v2.sql.SqlUtils.toSQLException(SqlUtils.java:118) ~[mchange-commons-java-0.2.10.jar:0.2.10]
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool.checkoutPooledConnection(C3P0PooledConnectionPool.java:692) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.c3p0.impl.AbstractPoolBackedDataSource.getConnection(AbstractPoolBackedDataSource.java:140) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.j256.ormlite.jdbc.DataSourceConnectionSource.getReadWriteConnection(DataSourceConnectionSource.java:120) ~[ormlite-jdbc-4.48.jar:?]
+	at com.j256.ormlite.jdbc.DataSourceConnectionSource.getReadOnlyConnection(DataSourceConnectionSource.java:102) ~[ormlite-jdbc-4.48.jar:?]
+	at com.j256.ormlite.stmt.StatementExecutor.buildIterator(StatementExecutor.java:243) ~[ormlite-core-4.48.jar:?]
+	at com.j256.ormlite.stmt.StatementExecutor.query(StatementExecutor.java:196) ~[ormlite-core-4.48.jar:?]
+	at com.j256.ormlite.dao.BaseDaoImpl.query(BaseDaoImpl.java:265) ~[ormlite-core-4.48.jar:?]
+	at com.j256.ormlite.stmt.QueryBuilder.query(QueryBuilder.java:361) ~[ormlite-core-4.48.jar:?]
+	at com.j256.ormlite.stmt.Where.query(Where.java:503) ~[ormlite-core-4.48.jar:?]
+	at com.j256.ormlite.dao.BaseDaoImpl.queryForEq(BaseDaoImpl.java:245) ~[ormlite-core-4.48.jar:?]
+	at org.tfelab.health.model.User.getUserByName(User.java:131) ~[bin/:?]
+	at org.tfelab.health.route.UserRoute.lambda$3(UserRoute.java:123) ~[bin/:?]
+	at spark.ResponseTransformerRouteImpl$1.handle(ResponseTransformerRouteImpl.java:47) [spark-core-2.3.jar:?]
+	at spark.webserver.MatcherFilter.doFilter(MatcherFilter.java:162) [spark-core-2.3.jar:?]
+	at spark.webserver.JettyHandler.doHandle(JettyHandler.java:61) [spark-core-2.3.jar:?]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1556) [jetty-server-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141) [jetty-server-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.server.handler.HandlerList.handle(HandlerList.java:52) [jetty-server-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132) [jetty-server-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.server.Server.handle(Server.java:549) [jetty-server-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:320) [jetty-server-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:254) [jetty-server-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:269) [jetty-io-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:97) [jetty-io-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.java:124) [jetty-io-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.util.thread.Invocable.invokePreferred(Invocable.java:90) [jetty-util-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.util.thread.strategy.ExecutingExecutionStrategy.invoke(ExecutingExecutionStrategy.java:58) [jetty-util-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.produceConsume(ExecuteProduceConsume.java:201) [jetty-util-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.run(ExecuteProduceConsume.java:133) [jetty-util-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:672) [jetty-util-9.4.0.M1.jar:9.4.0.M1]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:590) [jetty-util-9.4.0.M1.jar:9.4.0.M1]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_74]
+Caused by: com.mchange.v2.resourcepool.CannotAcquireResourceException: A ResourcePool could not acquire a resource from its primary factory or source.
+	at com.mchange.v2.resourcepool.BasicResourcePool.awaitAvailable(BasicResourcePool.java:1469) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.resourcepool.BasicResourcePool.prelimCheckoutResource(BasicResourcePool.java:644) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.resourcepool.BasicResourcePool.checkoutResource(BasicResourcePool.java:554) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool.checkoutAndMarkConnectionInUse(C3P0PooledConnectionPool.java:758) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool.checkoutPooledConnection(C3P0PooledConnectionPool.java:685) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	... 31 more
+
+2016-09-20 @ 21:46:53 CST INFO  [org.tfelab.common.db.Refacter:103] createTables - Table org.tfelab.health.model.DoctorService already exists.
+2016-09-21 @ 17:04:24 CST ERROR [org.tfelab.common.db.Refacter:107] createTables - Error create DB for org.tfelab.health.model.DoctorComment. java.sql.SQLException: Connections could not be acquired from the underlying database!
+	at com.mchange.v2.sql.SqlUtils.toSQLException(SqlUtils.java:118) ~[mchange-commons-java-0.2.10.jar:0.2.10]
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool.checkoutPooledConnection(C3P0PooledConnectionPool.java:692) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.c3p0.impl.AbstractPoolBackedDataSource.getConnection(AbstractPoolBackedDataSource.java:140) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.j256.ormlite.jdbc.DataSourceConnectionSource.getReadWriteConnection(DataSourceConnectionSource.java:120) ~[ormlite-jdbc-4.48.jar:?]
+	at com.j256.ormlite.jdbc.DataSourceConnectionSource.getReadOnlyConnection(DataSourceConnectionSource.java:102) ~[ormlite-jdbc-4.48.jar:?]
+	at com.j256.ormlite.dao.BaseDaoImpl.isTableExists(BaseDaoImpl.java:689) ~[ormlite-core-4.48.jar:?]
+	at org.tfelab.common.db.Refacter.createTables(Refacter.java:99) [core-0.3.112.jar:?]
+	at org.tfelab.common.db.Refacter.createTable(Refacter.java:36) [core-0.3.112.jar:?]
+	at org.tfelab.health.ServiceWrapper.main(ServiceWrapper.java:54) [bin/:?]
+Caused by: com.mchange.v2.resourcepool.CannotAcquireResourceException: A ResourcePool could not acquire a resource from its primary factory or source.
+	at com.mchange.v2.resourcepool.BasicResourcePool.awaitAvailable(BasicResourcePool.java:1469) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.resourcepool.BasicResourcePool.prelimCheckoutResource(BasicResourcePool.java:644) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.resourcepool.BasicResourcePool.checkoutResource(BasicResourcePool.java:554) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool.checkoutAndMarkConnectionInUse(C3P0PooledConnectionPool.java:758) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool.checkoutPooledConnection(C3P0PooledConnectionPool.java:685) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	... 7 more
+
+2016-09-21 @ 17:30:44 CST ERROR [org.tfelab.common.db.Refacter:107] createTables - Error create DB for org.tfelab.health.model.DoctorComment. java.sql.SQLException: Connections could not be acquired from the underlying database!
+	at com.mchange.v2.sql.SqlUtils.toSQLException(SqlUtils.java:118) ~[mchange-commons-java-0.2.10.jar:0.2.10]
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool.checkoutPooledConnection(C3P0PooledConnectionPool.java:692) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.c3p0.impl.AbstractPoolBackedDataSource.getConnection(AbstractPoolBackedDataSource.java:140) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.j256.ormlite.jdbc.DataSourceConnectionSource.getReadWriteConnection(DataSourceConnectionSource.java:120) ~[ormlite-jdbc-4.48.jar:?]
+	at com.j256.ormlite.jdbc.DataSourceConnectionSource.getReadOnlyConnection(DataSourceConnectionSource.java:102) ~[ormlite-jdbc-4.48.jar:?]
+	at com.j256.ormlite.dao.BaseDaoImpl.isTableExists(BaseDaoImpl.java:689) ~[ormlite-core-4.48.jar:?]
+	at org.tfelab.common.db.Refacter.createTables(Refacter.java:99) [core-0.3.112.jar:?]
+	at org.tfelab.common.db.Refacter.createTable(Refacter.java:36) [core-0.3.112.jar:?]
+	at org.tfelab.health.ServiceWrapper.main(ServiceWrapper.java:54) [bin/:?]
+Caused by: com.mchange.v2.resourcepool.CannotAcquireResourceException: A ResourcePool could not acquire a resource from its primary factory or source.
+	at com.mchange.v2.resourcepool.BasicResourcePool.awaitAvailable(BasicResourcePool.java:1469) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.resourcepool.BasicResourcePool.prelimCheckoutResource(BasicResourcePool.java:644) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.resourcepool.BasicResourcePool.checkoutResource(BasicResourcePool.java:554) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool.checkoutAndMarkConnectionInUse(C3P0PooledConnectionPool.java:758) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool.checkoutPooledConnection(C3P0PooledConnectionPool.java:685) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	... 7 more
+
+2016-09-21 @ 17:30:54 CST ERROR [org.tfelab.common.db.Refacter:107] createTables - Error create DB for org.tfelab.health.model.DoctorComment. java.sql.SQLException: Connections could not be acquired from the underlying database!
+	at com.mchange.v2.sql.SqlUtils.toSQLException(SqlUtils.java:118) ~[mchange-commons-java-0.2.10.jar:0.2.10]
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool.checkoutPooledConnection(C3P0PooledConnectionPool.java:692) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.c3p0.impl.AbstractPoolBackedDataSource.getConnection(AbstractPoolBackedDataSource.java:140) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.j256.ormlite.jdbc.DataSourceConnectionSource.getReadWriteConnection(DataSourceConnectionSource.java:120) ~[ormlite-jdbc-4.48.jar:?]
+	at com.j256.ormlite.jdbc.DataSourceConnectionSource.getReadOnlyConnection(DataSourceConnectionSource.java:102) ~[ormlite-jdbc-4.48.jar:?]
+	at com.j256.ormlite.dao.BaseDaoImpl.isTableExists(BaseDaoImpl.java:689) ~[ormlite-core-4.48.jar:?]
+	at org.tfelab.common.db.Refacter.createTables(Refacter.java:99) [core-0.3.112.jar:?]
+	at org.tfelab.common.db.Refacter.createTable(Refacter.java:36) [core-0.3.112.jar:?]
+	at org.tfelab.health.ServiceWrapper.main(ServiceWrapper.java:54) [bin/:?]
+Caused by: com.mchange.v2.resourcepool.CannotAcquireResourceException: A ResourcePool could not acquire a resource from its primary factory or source.
+	at com.mchange.v2.resourcepool.BasicResourcePool.awaitAvailable(BasicResourcePool.java:1469) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.resourcepool.BasicResourcePool.prelimCheckoutResource(BasicResourcePool.java:644) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.resourcepool.BasicResourcePool.checkoutResource(BasicResourcePool.java:554) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool.checkoutAndMarkConnectionInUse(C3P0PooledConnectionPool.java:758) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool.checkoutPooledConnection(C3P0PooledConnectionPool.java:685) ~[c3p0-0.9.5.1.jar:0.9.5.1]
+	... 7 more
+
+2016-09-21 @ 18:18:25 CST INFO  [org.tfelab.common.db.Refacter:103] createTables - Table org.tfelab.health.model.DoctorComment already exists.
+2016-09-22 @ 20:03:58 CST INFO  [org.tfelab.health.route.QueryRoute:59] lambda$0 - {"section_id":1,"service":"图文问诊","preference":0,"log":116.40387397,"lat":39.91488908,"offset":0,"limit":10}
+2016-09-22 @ 20:05:09 CST INFO  [org.tfelab.health.route.QueryRoute:59] lambda$0 - {"section_id":1,"service":"图文问诊","preference":0,"log":116.40387397,"lat":39.91488908,"offset":0,"limit":10}
+2016-09-22 @ 20:05:09 CST INFO  [org.tfelab.health.route.QueryRoute:233] getDoctors - SELECT  	t.id,  	10 * (t1.r1 - t.r1) / t1.r1 + (t.r2 - t2.r2) + 10 * (t3.r3 - t.r3) / t3.r3 as r FROM ( 	SELECT  		`doctor_services`.id as id,  		POWER(POWER(hospitals.longitude - 116.40387397, 2) + POWER(hospitals.latitude - 39.91488908, 2), 0.5) as r1, 		`doctors`.rating as r2, 		`doctor_services`.min_charge as r3 	FROM `doctor_services`  	INNER JOIN `doctors` ON `doctor_services`.`doctor_id` = `doctors`.`id`  	INNER JOIN `hospitals` ON `doctors`.`hospital_id` = `hospitals`.`id`  	WHERE `doctor_services`.`name` = '图文问诊'  		AND `doctors`.`section_id` = '1'  ) t, (SELECT MAX(POWER(POWER(longitude - 116.40387397, 2) + POWER(latitude - 39.91488908, 2), 0.5)) as r1 FROM hospitals) t1, (SELECT MIN(rating) as r2 FROM doctors) t2, (SELECT MAX(min_charge) as r3 FROM doctor_services) t3 ORDER BY r DESC LIMIT 10 OFFSET 0;
+2016-09-22 @ 20:06:38 CST INFO  [org.tfelab.health.route.QueryRoute:59] lambda$0 - {"section_id":1,"service":"图文问诊","preference":0,"log":116.40387397,"lat":39.91488908,"offset":0,"limit":10}
+2016-09-22 @ 20:06:41 CST INFO  [org.tfelab.health.route.QueryRoute:247] getDoctors - 0
+2016-09-22 @ 20:08:19 CST INFO  [org.tfelab.health.route.QueryRoute:59] lambda$0 - {"section_id":1,"service":"图文问诊","preference":0,"log":116.40387397,"lat":39.91488908,"offset":0,"limit":10}
+2016-09-22 @ 20:10:23 CST INFO  [org.tfelab.health.route.QueryRoute:233] getDoctors - SELECT  	t.id,  	10 * (t1.r1 - t.r1) / t1.r1 + (t.r2 - t2.r2) + 10 * (t3.r3 - t.r3) / t3.r3 as r FROM ( 	SELECT  		`doctor_services`.id as id,  		POWER(POWER(hospitals.longitude - 116.2839127, 2) + POWER(hospitals.latitude - 39.9115982, 2), 0.5) as r1, 		`doctors`.rating as r2, 		`doctor_services`.min_charge as r3 	FROM `doctor_services`  	INNER JOIN `doctors` ON `doctor_services`.`doctor_id` = `doctors`.`id`  	INNER JOIN `hospitals` ON `doctors`.`hospital_id` = `hospitals`.`id`  	WHERE `doctor_services`.`name` = '图文问诊'  		AND `doctors`.`section_id` = '1'  ) t, (SELECT MAX(POWER(POWER(longitude - 116.2839127, 2) + POWER(latitude - 39.9115982, 2), 0.5)) as r1 FROM hospitals) t1, (SELECT MIN(rating) as r2 FROM doctors) t2, (SELECT MAX(min_charge) as r3 FROM doctor_services) t3 ORDER BY r DESC LIMIT 1 OFFSET 0;
+2016-09-22 @ 20:13:00 CST INFO  [org.tfelab.health.route.QueryRoute:59] lambda$0 - {"section_id":1,"service":"图文问诊","preference":0,"log":0.0,"lat":0.0,"offset":0,"limit":10}
+2016-09-22 @ 20:13:00 CST INFO  [org.tfelab.health.route.QueryRoute:233] getDoctors - SELECT  	t.id,  	10 * (t1.r1 - t.r1) / t1.r1 + (t.r2 - t2.r2) + 10 * (t3.r3 - t.r3) / t3.r3 as r FROM ( 	SELECT  		`doctor_services`.id as id,  		POWER(POWER(hospitals.longitude - 0.0, 2) + POWER(hospitals.latitude - 0.0, 2), 0.5) as r1, 		`doctors`.rating as r2, 		`doctor_services`.min_charge as r3 	FROM `doctor_services`  	INNER JOIN `doctors` ON `doctor_services`.`doctor_id` = `doctors`.`id`  	INNER JOIN `hospitals` ON `doctors`.`hospital_id` = `hospitals`.`id`  	WHERE `doctor_services`.`name` = '图文问诊'  		AND `doctors`.`section_id` = '1'  ) t, (SELECT MAX(POWER(POWER(longitude - 0.0, 2) + POWER(latitude - 0.0, 2), 0.5)) as r1 FROM hospitals) t1, (SELECT MIN(rating) as r2 FROM doctors) t2, (SELECT MAX(min_charge) as r3 FROM doctor_services) t3 ORDER BY r DESC LIMIT 10 OFFSET 0;
+2016-09-22 @ 20:13:02 CST INFO  [org.tfelab.health.route.QueryRoute:59] lambda$0 - {"section_id":1,"service":"图文问诊","preference":0,"log":0.0,"lat":0.0,"offset":0,"limit":10}
+2016-09-22 @ 20:13:02 CST INFO  [org.tfelab.health.route.QueryRoute:233] getDoctors - SELECT  	t.id,  	10 * (t1.r1 - t.r1) / t1.r1 + (t.r2 - t2.r2) + 10 * (t3.r3 - t.r3) / t3.r3 as r FROM ( 	SELECT  		`doctor_services`.id as id,  		POWER(POWER(hospitals.longitude - 0.0, 2) + POWER(hospitals.latitude - 0.0, 2), 0.5) as r1, 		`doctors`.rating as r2, 		`doctor_services`.min_charge as r3 	FROM `doctor_services`  	INNER JOIN `doctors` ON `doctor_services`.`doctor_id` = `doctors`.`id`  	INNER JOIN `hospitals` ON `doctors`.`hospital_id` = `hospitals`.`id`  	WHERE `doctor_services`.`name` = '图文问诊'  		AND `doctors`.`section_id` = '1'  ) t, (SELECT MAX(POWER(POWER(longitude - 0.0, 2) + POWER(latitude - 0.0, 2), 0.5)) as r1 FROM hospitals) t1, (SELECT MIN(rating) as r2 FROM doctors) t2, (SELECT MAX(min_charge) as r3 FROM doctor_services) t3 ORDER BY r DESC LIMIT 10 OFFSET 0;
+2016-09-22 @ 20:13:37 CST INFO  [org.tfelab.health.route.QueryRoute:59] lambda$0 - {"section_id":1,"service":"图文问诊","preference":0,"log":0.0,"lat":0.0,"offset":0,"limit":10}
+2016-09-22 @ 20:13:42 CST INFO  [org.tfelab.health.route.QueryRoute:59] lambda$0 - {"section_id":1,"service":"图文问诊","preference":0,"log":0.0,"lat":0.0,"offset":0,"limit":10}
+2016-09-22 @ 20:14:26 CST INFO  [org.tfelab.health.route.QueryRoute:59] lambda$0 - {"section_id":1,"service":"图文问诊","preference":0,"log":116.40387397,"lat":39.91488908,"offset":0,"limit":10}
+2016-09-22 @ 20:14:37 CST INFO  [org.tfelab.health.route.QueryRoute:59] lambda$0 - {"section_id":1,"service":"图文问诊","preference":0,"log":116.40387397,"lat":39.91488908,"offset":0,"limit":10}
+2017-01-18 @ 17:47:52 CST INFO  [org.tfelab.health.ServiceWrapper:41] initdb - Creating tables...
+2017-01-18 @ 17:47:56 CST INFO  [org.tfelab.health.ServiceWrapper:48] initdb - Create tables done.
+2017-01-19 @ 13:08:14 CST INFO  [spark.staticfiles.StaticFilesConfiguration:164] configureExternal - External StaticResourceHandler configured with folder = www
+2017-01-19 @ 13:08:14 CST WARN  [spark.staticfiles.StaticFilesFolder:27] externalConfiguredTo - Registering external static files folder [www] as [D:/git/health-backend/health-backend/www].
+2017-01-19 @ 13:08:14 CST INFO  [org.eclipse.jetty.util.log.Log:192] initialized - Logging initialized @1306ms to org.eclipse.jetty.util.log.Slf4jLog
+2017-01-19 @ 13:08:14 CST INFO  [spark.embeddedserver.jetty.EmbeddedJettyServer:149] ignite - == Spark has ignited ...
+2017-01-19 @ 13:08:14 CST INFO  [spark.embeddedserver.jetty.EmbeddedJettyServer:150] ignite - >> Listening on 0.0.0.0:10000
+2017-01-19 @ 13:08:14 CST INFO  [org.eclipse.jetty.server.Server:372] doStart - jetty-9.4.0.v20161208
+2017-01-19 @ 13:08:14 CST INFO  [org.eclipse.jetty.server.session.DefaultSessionIdManager:354] doStart - DefaultSessionIdManager workerName=node0
+2017-01-19 @ 13:08:14 CST INFO  [org.eclipse.jetty.server.session.DefaultSessionIdManager:359] doStart - No SessionScavenger set, using defaults
+2017-01-19 @ 13:08:14 CST INFO  [org.eclipse.jetty.server.session.HouseKeeper:146] startScavenging - Scavenging every 600000ms
+2017-01-19 @ 13:08:14 CST INFO  [org.eclipse.jetty.server.AbstractConnector:280] doStart - Started ServerConnector@24d2317{HTTP/1.1,[http/1.1]}{0.0.0.0:10000}
+2017-01-19 @ 13:08:14 CST INFO  [org.eclipse.jetty.server.Server:444] doStart - Started @1484ms
+2017-01-19 @ 13:09:34 CST INFO  [spark.staticfiles.StaticFilesConfiguration:164] configureExternal - External StaticResourceHandler configured with folder = www
+2017-01-19 @ 13:09:34 CST WARN  [spark.staticfiles.StaticFilesFolder:27] externalConfiguredTo - Registering external static files folder [www] as [D:/git/health-backend/health-backend/www].
+2017-01-19 @ 13:09:34 CST INFO  [org.eclipse.jetty.util.log.Log:192] initialized - Logging initialized @1141ms to org.eclipse.jetty.util.log.Slf4jLog
+2017-01-19 @ 13:09:35 CST INFO  [spark.embeddedserver.jetty.EmbeddedJettyServer:149] ignite - == Spark has ignited ...
+2017-01-19 @ 13:09:35 CST INFO  [spark.embeddedserver.jetty.EmbeddedJettyServer:150] ignite - >> Listening on 0.0.0.0:10000
+2017-01-19 @ 13:09:35 CST INFO  [org.eclipse.jetty.server.Server:372] doStart - jetty-9.4.0.v20161208
+2017-01-19 @ 13:09:35 CST INFO  [org.eclipse.jetty.server.session.DefaultSessionIdManager:354] doStart - DefaultSessionIdManager workerName=node0
+2017-01-19 @ 13:09:35 CST INFO  [org.eclipse.jetty.server.session.DefaultSessionIdManager:359] doStart - No SessionScavenger set, using defaults
+2017-01-19 @ 13:09:35 CST INFO  [org.eclipse.jetty.server.session.HouseKeeper:146] startScavenging - Scavenging every 660000ms
+2017-01-19 @ 13:09:35 CST INFO  [org.eclipse.jetty.server.AbstractConnector:280] doStart - Started ServerConnector@70a5ceeb{HTTP/1.1,[http/1.1]}{0.0.0.0:10000}
+2017-01-19 @ 13:09:35 CST INFO  [org.eclipse.jetty.server.Server:444] doStart - Started @1272ms
+2017-01-19 @ 14:10:36 CST INFO  [spark.staticfiles.StaticFilesConfiguration:164] configureExternal - External StaticResourceHandler configured with folder = www
+2017-01-19 @ 14:10:36 CST WARN  [spark.staticfiles.StaticFilesFolder:27] externalConfiguredTo - Registering external static files folder [www] as [D:/git/health-backend/health-backend/www].
+2017-01-19 @ 14:10:37 CST INFO  [org.reflections.Reflections:229] scan - Reflections took 113 ms to scan 1 urls, producing 2 keys and 3 values 
+2017-01-19 @ 14:10:37 CST INFO  [org.eclipse.jetty.util.log.Log:192] initialized - Logging initialized @1517ms to org.eclipse.jetty.util.log.Slf4jLog
+2017-01-19 @ 14:10:37 CST INFO  [spark.embeddedserver.jetty.EmbeddedJettyServer:149] ignite - == Spark has ignited ...
+2017-01-19 @ 14:10:37 CST INFO  [spark.embeddedserver.jetty.EmbeddedJettyServer:150] ignite - >> Listening on 0.0.0.0:8010
+2017-01-19 @ 14:10:37 CST INFO  [org.eclipse.jetty.server.Server:372] doStart - jetty-9.4.0.v20161208
+2017-01-19 @ 14:10:37 CST INFO  [org.eclipse.jetty.server.session.DefaultSessionIdManager:354] doStart - DefaultSessionIdManager workerName=node0
+2017-01-19 @ 14:10:37 CST INFO  [org.eclipse.jetty.server.session.DefaultSessionIdManager:359] doStart - No SessionScavenger set, using defaults
+2017-01-19 @ 14:10:37 CST INFO  [org.eclipse.jetty.server.session.HouseKeeper:146] startScavenging - Scavenging every 600000ms
+2017-01-19 @ 14:10:37 CST INFO  [org.eclipse.jetty.server.AbstractConnector:280] doStart - Started ServerConnector@6ca88dbe{HTTP/1.1,[http/1.1]}{0.0.0.0:8010}
+2017-01-19 @ 14:10:37 CST INFO  [org.eclipse.jetty.server.Server:444] doStart - Started @1650ms
+2017-01-19 @ 14:11:16 CST INFO  [spark.staticfiles.StaticFilesConfiguration:164] configureExternal - External StaticResourceHandler configured with folder = www
+2017-01-19 @ 14:11:16 CST WARN  [spark.staticfiles.StaticFilesFolder:27] externalConfiguredTo - Registering external static files folder [www] as [D:/git/health-backend/health-backend/www].
+2017-01-19 @ 14:11:16 CST INFO  [org.reflections.Reflections:229] scan - Reflections took 81 ms to scan 1 urls, producing 2 keys and 3 values 
+2017-01-19 @ 14:11:17 CST INFO  [org.eclipse.jetty.util.log.Log:192] initialized - Logging initialized @1294ms to org.eclipse.jetty.util.log.Slf4jLog
+2017-01-19 @ 14:11:17 CST INFO  [spark.embeddedserver.jetty.EmbeddedJettyServer:149] ignite - == Spark has ignited ...
+2017-01-19 @ 14:11:17 CST INFO  [spark.embeddedserver.jetty.EmbeddedJettyServer:150] ignite - >> Listening on 0.0.0.0:8010
+2017-01-19 @ 14:11:17 CST INFO  [org.eclipse.jetty.server.Server:372] doStart - jetty-9.4.0.v20161208
+2017-01-19 @ 14:11:17 CST INFO  [org.eclipse.jetty.server.session.DefaultSessionIdManager:354] doStart - DefaultSessionIdManager workerName=node0
+2017-01-19 @ 14:11:17 CST INFO  [org.eclipse.jetty.server.session.DefaultSessionIdManager:359] doStart - No SessionScavenger set, using defaults
+2017-01-19 @ 14:11:17 CST INFO  [org.eclipse.jetty.server.session.HouseKeeper:146] startScavenging - Scavenging every 600000ms
+2017-01-19 @ 14:11:17 CST INFO  [org.eclipse.jetty.server.AbstractConnector:280] doStart - Started ServerConnector@2548a32a{HTTP/1.1,[http/1.1]}{0.0.0.0:8010}
+2017-01-19 @ 14:11:17 CST INFO  [org.eclipse.jetty.server.Server:444] doStart - Started @1435ms
+2017-01-19 @ 14:13:32 CST INFO  [spark.staticfiles.StaticFilesConfiguration:164] configureExternal - External StaticResourceHandler configured with folder = www
+2017-01-19 @ 14:13:32 CST WARN  [spark.staticfiles.StaticFilesFolder:27] externalConfiguredTo - Registering external static files folder [www] as [D:/git/health-backend/health-backend/www].
+2017-01-19 @ 14:13:32 CST INFO  [org.reflections.Reflections:229] scan - Reflections took 80 ms to scan 1 urls, producing 3 keys and 12 values 
+2017-01-19 @ 14:13:32 CST INFO  [org.tfelab.health.ServiceWrapper:43] <init> - MsgTransformer
+2017-01-19 @ 14:13:32 CST INFO  [org.tfelab.health.ServiceWrapper:43] <init> - DoctorRoute
+2017-01-19 @ 14:13:32 CST INFO  [org.tfelab.health.ServiceWrapper:43] <init> - QueryRoute
+2017-01-19 @ 14:13:32 CST INFO  [org.tfelab.health.ServiceWrapper:43] <init> - CommonRoute
+2017-01-19 @ 14:13:32 CST INFO  [org.tfelab.health.ServiceWrapper:43] <init> - Query
+2017-01-19 @ 14:13:32 CST INFO  [org.tfelab.health.ServiceWrapper:43] <init> - Query
+2017-01-19 @ 14:13:32 CST INFO  [org.tfelab.health.ServiceWrapper:43] <init> - SectionRoute
+2017-01-19 @ 14:13:32 CST INFO  [org.tfelab.health.ServiceWrapper:43] <init> - UserRoute
+2017-01-19 @ 14:13:32 CST INFO  [org.tfelab.health.ServiceWrapper:43] <init> - CommentRoute
+2017-01-19 @ 14:13:32 CST INFO  [org.eclipse.jetty.util.log.Log:192] initialized - Logging initialized @1456ms to org.eclipse.jetty.util.log.Slf4jLog
+2017-01-19 @ 14:13:33 CST INFO  [spark.embeddedserver.jetty.EmbeddedJettyServer:149] ignite - == Spark has ignited ...
+2017-01-19 @ 14:13:33 CST INFO  [spark.embeddedserver.jetty.EmbeddedJettyServer:150] ignite - >> Listening on 0.0.0.0:8010
+2017-01-19 @ 14:13:33 CST INFO  [org.eclipse.jetty.server.Server:372] doStart - jetty-9.4.0.v20161208
+2017-01-19 @ 14:13:33 CST INFO  [org.eclipse.jetty.server.session.DefaultSessionIdManager:354] doStart - DefaultSessionIdManager workerName=node0
+2017-01-19 @ 14:13:33 CST INFO  [org.eclipse.jetty.server.session.DefaultSessionIdManager:359] doStart - No SessionScavenger set, using defaults
+2017-01-19 @ 14:13:33 CST INFO  [org.eclipse.jetty.server.session.HouseKeeper:146] startScavenging - Scavenging every 600000ms
+2017-01-19 @ 14:13:33 CST INFO  [org.eclipse.jetty.server.AbstractConnector:280] doStart - Started ServerConnector@670cfaf1{HTTP/1.1,[http/1.1]}{0.0.0.0:8010}
+2017-01-19 @ 14:13:33 CST INFO  [org.eclipse.jetty.server.Server:444] doStart - Started @1602ms
+2017-01-19 @ 14:18:47 CST INFO  [spark.staticfiles.StaticFilesConfiguration:164] configureExternal - External StaticResourceHandler configured with folder = www
+2017-01-19 @ 14:18:47 CST WARN  [spark.staticfiles.StaticFilesFolder:27] externalConfiguredTo - Registering external static files folder [www] as [D:/git/health-backend/health-backend/www].
+2017-01-19 @ 14:18:47 CST INFO  [org.reflections.Reflections:229] scan - Reflections took 77 ms to scan 1 urls, producing 3 keys and 12 values 
+2017-01-19 @ 14:18:47 CST INFO  [org.tfelab.health.ServiceWrapper:43] <init> - Add DoctorRoute.
+2017-01-19 @ 14:18:47 CST INFO  [org.tfelab.health.ServiceWrapper:43] <init> - Add QueryRoute.
+2017-01-19 @ 14:18:47 CST INFO  [org.tfelab.health.ServiceWrapper:43] <init> - Add CommonRoute.
+2017-01-19 @ 14:18:47 CST INFO  [org.tfelab.health.ServiceWrapper:43] <init> - Add SectionRoute.
+2017-01-19 @ 14:18:47 CST INFO  [org.tfelab.health.ServiceWrapper:43] <init> - Add UserRoute.
+2017-01-19 @ 14:18:47 CST INFO  [org.tfelab.health.ServiceWrapper:43] <init> - Add CommentRoute.
+2017-01-19 @ 14:18:47 CST INFO  [org.eclipse.jetty.util.log.Log:192] initialized - Logging initialized @1324ms to org.eclipse.jetty.util.log.Slf4jLog
+2017-01-19 @ 14:18:47 CST INFO  [spark.embeddedserver.jetty.EmbeddedJettyServer:149] ignite - == Spark has ignited ...
+2017-01-19 @ 14:18:47 CST INFO  [spark.embeddedserver.jetty.EmbeddedJettyServer:150] ignite - >> Listening on 0.0.0.0:8010
+2017-01-19 @ 14:18:47 CST INFO  [org.eclipse.jetty.server.Server:372] doStart - jetty-9.4.0.v20161208
+2017-01-19 @ 14:18:47 CST INFO  [org.eclipse.jetty.server.session.DefaultSessionIdManager:354] doStart - DefaultSessionIdManager workerName=node0
+2017-01-19 @ 14:18:47 CST INFO  [org.eclipse.jetty.server.session.DefaultSessionIdManager:359] doStart - No SessionScavenger set, using defaults
+2017-01-19 @ 14:18:47 CST INFO  [org.eclipse.jetty.server.session.HouseKeeper:146] startScavenging - Scavenging every 660000ms
+2017-01-19 @ 14:18:47 CST INFO  [org.eclipse.jetty.server.AbstractConnector:280] doStart - Started ServerConnector@3925def5{HTTP/1.1,[http/1.1]}{0.0.0.0:8010}
+2017-01-19 @ 14:18:47 CST INFO  [org.eclipse.jetty.server.Server:444] doStart - Started @1453ms
+2017-01-19 @ 14:19:02 CST INFO  [spark.http.matching.MatcherFilter:160] doFilter - The requested route [/lib/backbone/backbone-min.map] has not been mapped in Spark for Accept: [null]
+2017-01-19 @ 14:19:02 CST INFO  [spark.http.matching.MatcherFilter:160] doFilter - The requested route [/lib/underscore/underscore-min.map] has not been mapped in Spark for Accept: [null]
+2017-01-19 @ 14:19:15 CST INFO  [com.mchange.v2.log.slf4j.Slf4jMLog$Slf4jMLogger$InfoLogger:203] log - MLog clients using slf4j logging.
+2017-01-19 @ 14:19:15 CST INFO  [com.mchange.v2.log.slf4j.Slf4jMLog$Slf4jMLogger$InfoLogger:203] log - Initializing c3p0-0.9.5.1 [built 16-June-2015 00:06:36 -0700; debug? true; trace: 10]
+2017-01-19 @ 14:19:15 CST INFO  [com.mchange.v2.log.slf4j.Slf4jMLog$Slf4jMLogger$InfoLogger:203] log - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 5, acquireRetryAttempts -> 0, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, contextClassLoaderSource -> caller, dataSourceName -> 2rvxx19l1ebqva4prjv4c|4834dd47, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, extensions -> {}, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, forceSynchronousCheckins -> false, forceUseNamedDriverClass -> false, identityToken -> 2rvxx19l1ebqva4prjv4c|4834dd47, idleConnectionTestPeriod -> 120, initialPoolSize -> 5, jdbcUrl -> jdbc:mysql://127.0.0.1:3306/health, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 3600, maxIdleTime -> 120, maxIdleTimeExcessConnections -> 120, maxPoolSize -> 20, maxStatements -> 100, maxStatementsPerConnection -> 0, minPoolSize -> 5, numHelperThreads -> 3, preferredTestQuery -> null, privilegeSpawnedThreads -> false, properties -> {user=******, password=******}, propertyCycle -> 0, statementCacheNumDeferredCloseThreads -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, userOverrides -> {}, usesTraditionalReflectiveProxies -> false ]
+2017-01-20 @ 14:44:35 CST INFO  [spark.staticfiles.StaticFilesConfiguration:164] configureExternal - External StaticResourceHandler configured with folder = www
+2017-01-20 @ 14:44:35 CST WARN  [spark.staticfiles.StaticFilesFolder:27] externalConfiguredTo - Registering external static files folder [www] as [D:/git/health-backend/health-backend/www].
+2017-01-20 @ 14:44:35 CST INFO  [org.reflections.Reflections:229] scan - Reflections took 127 ms to scan 1 urls, producing 3 keys and 12 values 
+2017-01-20 @ 14:44:36 CST INFO  [org.tfelab.health.ServiceWrapper:46] <init> - Add DoctorRoute.
+2017-01-20 @ 14:44:36 CST INFO  [org.tfelab.health.ServiceWrapper:46] <init> - Add QueryRoute.
+2017-01-20 @ 14:44:36 CST INFO  [org.tfelab.health.ServiceWrapper:46] <init> - Add CommonRoute.
+2017-01-20 @ 14:44:36 CST INFO  [org.tfelab.health.ServiceWrapper:46] <init> - Add SectionRoute.
+2017-01-20 @ 14:44:36 CST INFO  [org.tfelab.health.ServiceWrapper:46] <init> - Add UserRoute.
+2017-01-20 @ 14:44:36 CST INFO  [org.tfelab.health.ServiceWrapper:46] <init> - Add CommentRoute.
+2017-01-20 @ 14:44:36 CST INFO  [org.eclipse.jetty.util.log.Log:192] initialized - Logging initialized @2156ms to org.eclipse.jetty.util.log.Slf4jLog
+2017-01-20 @ 14:48:19 CST INFO  [spark.staticfiles.StaticFilesConfiguration:164] configureExternal - External StaticResourceHandler configured with folder = www
+2017-01-20 @ 14:48:19 CST WARN  [spark.staticfiles.StaticFilesFolder:27] externalConfiguredTo - Registering external static files folder [www] as [D:/git/health-backend/health-backend/www].
+2017-01-20 @ 14:48:19 CST INFO  [org.reflections.Reflections:229] scan - Reflections took 89 ms to scan 1 urls, producing 3 keys and 12 values 
+2017-01-20 @ 14:48:19 CST INFO  [org.tfelab.health.ServiceWrapper:46] <init> - Add DoctorRoute.
+2017-01-20 @ 14:48:19 CST INFO  [org.tfelab.health.ServiceWrapper:46] <init> - Add QueryRoute.
+2017-01-20 @ 14:48:19 CST INFO  [org.tfelab.health.ServiceWrapper:46] <init> - Add CommonRoute.
+2017-01-20 @ 14:48:19 CST INFO  [org.tfelab.health.ServiceWrapper:46] <init> - Add SectionRoute.
+2017-01-20 @ 14:48:19 CST INFO  [org.tfelab.health.ServiceWrapper:46] <init> - Add UserRoute.
+2017-01-20 @ 14:48:19 CST INFO  [org.tfelab.health.ServiceWrapper:46] <init> - Add CommentRoute.
+2017-01-20 @ 14:48:19 CST INFO  [org.eclipse.jetty.util.log.Log:192] initialized - Logging initialized @1575ms to org.eclipse.jetty.util.log.Slf4jLog
+2017-01-20 @ 14:48:19 CST INFO  [spark.embeddedserver.jetty.EmbeddedJettyServer:149] ignite - == Spark has ignited ...
+2017-01-20 @ 14:48:19 CST INFO  [spark.embeddedserver.jetty.EmbeddedJettyServer:150] ignite - >> Listening on 0.0.0.0:8010
+2017-01-20 @ 14:48:19 CST INFO  [org.eclipse.jetty.server.Server:372] doStart - jetty-9.4.0.v20161208
+2017-01-20 @ 14:48:19 CST INFO  [org.eclipse.jetty.server.session.DefaultSessionIdManager:354] doStart - DefaultSessionIdManager workerName=node0
+2017-01-20 @ 14:48:19 CST INFO  [org.eclipse.jetty.server.session.DefaultSessionIdManager:359] doStart - No SessionScavenger set, using defaults
+2017-01-20 @ 14:48:19 CST INFO  [org.eclipse.jetty.server.session.HouseKeeper:146] startScavenging - Scavenging every 600000ms
+2017-01-20 @ 14:48:19 CST INFO  [org.eclipse.jetty.server.AbstractConnector:280] doStart - Started ServerConnector@7e4bad40{HTTP/1.1,[http/1.1]}{0.0.0.0:8010}
+2017-01-20 @ 14:48:19 CST INFO  [org.eclipse.jetty.server.Server:444] doStart - Started @1730ms

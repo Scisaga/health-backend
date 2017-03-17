@@ -1,5 +1,5 @@
 group 'org.tfelab.health'
-version '0.0.1'
+version '0.0.3'
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
@@ -21,8 +21,32 @@ repositories {
 	}
 }
 
+startScripts {
+    doLast {
+        def winScriptFile  = file getWindowsScript()
+        def winFileText = winScriptFile.text
+        winFileText = winFileText.replaceAll('set CLASSPATH=.*', '@rem original CLASSPATH declaration replaced by:\nset CLASSPATH=%APP_HOME%\\\\lib\\\\\\*')
+        winFileText = winFileText.replaceAll('@rem Set local scope', '\n@ping 127.0.0.1 -n 2 >nul\n@rem Set local scope')
+        winScriptFile.text = winFileText
+    	
+    	def unixScriptFile  = file getUnixScript()
+        def unixFileText = unixScriptFile.text
+        unixFileText = unixFileText.replaceAll('APP_NAME', 'sleep 3\nAPP_NAME')
+    	unixScriptFile.text = unixFileText
+    }
+}
+
 dependencies {
-    compile 'org.tfelab:core:0.3.112'
-    compile 'org.eclipse.jetty:jetty-rewrite:9.4.0.M1'
+    compile 'org.tfelab:core:0.4.88'
+    compile 'org.eclipse.jetty:jetty-rewrite:9.4.0.v20161208'
+	compile 'org.apache.logging.log4j:log4j-slf4j-impl:2.4.1'
     testCompile 'junit:junit:4.12'
 }
+
+task copyFiles(group: 'tetra') << {
+    copy {
+	    from fileTree('www')
+	    into 'src/main/dist/www'
+    }
+}
+jar.dependsOn copyFiles

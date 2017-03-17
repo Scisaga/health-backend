@@ -56,6 +56,8 @@ public class QueryRoute {
 				
 				Query q = JSON.fromJSON(request.queryParams("_q"), Query.class);
 				
+				logger.info(JSON.toJson(q));
+				
 				if(q.preference == 1){
 					return new Msg<List<DoctorService>>(Msg.SUCCESS, getNearestDoctors(q));
 				}
@@ -86,11 +88,13 @@ public class QueryRoute {
 	 */
 	static List<DoctorService> getNearestDoctors(Query query) throws Exception{
 		
-		Dao<Hospital, String> hospitalDao = OrmLiteDaoManager.getDao(Hospital.class);
+		Dao<Hospital, String> hospitalDao = OrmLiteDaoManager.getDao(Hospital.class);//DAO(Data Acess Object,数据访问对象，对数据库进行访问的基类。)
 		
 		QueryBuilder<Hospital, String> qb1 = hospitalDao.queryBuilder();
-		qb1.orderByRaw("POWER(hospitals.longitude - " + query.log + ", 2) + POWER(hospitals.latitude - " + query.lat + ", 2)");
-		
+		qb1.orderByRaw("POWER(hospitals.longitude - " + query.log + ", 2) + POWER(hospitals.latitude - " + query.lat + ", 2)");//POWER返回给定表达式乘指定次方的值;
+		//语法：POWER ( numeric_expression , y )
+		//参数：numeric_expression：是精确数字或近似数字数据类型类别的表达式（bit 数据类型除外）。y：numeric_expression 的次方。y 可以是精确数字或近似数字数据类型类别的表达式（bit 数据类型除外）。
+
 		Dao<DoctorService, String> doctorServiceDao = OrmLiteDaoManager.getDao(DoctorService.class);
 		
 		QueryBuilder<DoctorService, String> qb2 = doctorServiceDao.queryBuilder();
@@ -109,7 +113,7 @@ public class QueryRoute {
 //			System.err.println(doctor.hospital.name);
 //			System.err.println(distance);
 //		}
-		
+		//在查询条件比较复杂时，需要调用PreparedQuery
 		PreparedQuery<DoctorService> pq = qb2.join(
 					qb.join(qb1)
 						.orderByRaw("POWER(hospitals.longitude - " + query.log + ", 2) + POWER(hospitals.latitude - " + query.lat + ", 2)")
@@ -226,6 +230,8 @@ public class QueryRoute {
 				"ORDER BY r DESC " +
 				"LIMIT " + query.limit + " OFFSET " + query.offset + ";";
 		
+		//logger.info(sql);
+		
 		Dao<DoctorService, String> doctorServiceDao = OrmLiteDaoManager.getDao(DoctorService.class);
 		GenericRawResults<String[]> records = doctorServiceDao.queryRaw(sql);
 		
@@ -239,13 +245,14 @@ public class QueryRoute {
 			result.add(ds);
 		}
 		
+		
 		return result;
 	}
 	
 	public static void main(String[] args){
 		
 		Query q = new Query();
-		q.section_id = 2;
+		q.section_id = 1;
 		q.service = "图文问诊";
 		q.preference = 0;
 		q.log = 116.2839127;

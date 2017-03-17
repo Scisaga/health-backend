@@ -62,11 +62,15 @@ public class UserRoute {
 				
 				User user = User.getUserById(id);
 				
-				return new Msg<User>(Msg.INSERT_SUCCESS, user);
-					
+				if(user != null) {
+					return new Msg<User>(Msg.SUCCESS, user);
+				}
+				else {
+					return new Msg<>(Msg.OBJECT_NOT_FOUND);
+				}
 			} catch (Exception e) {
 				logger.error("Error create user.", e);
-				return new Msg<>(Msg.INSERT_FAILURE);
+				return new Msg<>(Msg.FAILURE);
 			}
 		} , new MsgTransformer());
 		

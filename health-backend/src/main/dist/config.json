@@ -3,6 +3,7 @@
 		"connectTimeout": 15000,
 		"readTimeout": 15000
 	},
+	"port": 8010,
 	"database": {
 		"health": {
 			"url": "jdbc:mysql://10.0.0.13:3306/health",
@@ -20,9 +21,10 @@
 			"connectTimeout": 15000,
 			"readTimeout": 15000
 		},
+		"port": 8010,
 		"database": {
 			"health": {
-				"url": "jdbc:mysql://10.0.0.13:3306/health",
+				"url": "jdbc:mysql://127.0.0.1:3306/health",
 				"username": "health",
 				"password": "health",
 				"initialPoolSize": 5,
